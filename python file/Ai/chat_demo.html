@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🤖 MultimodalExpert AI Chat (Demo)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .chat-area {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8f9fa;
+      }
+
+      .message {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 15px;
+        max-width: 70%;
+        animation: fadeIn 0.3s ease-in;
+      }
+
+      .message.user {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        margin-left: auto;
+        text-align: right;
+      }
+
+      .message.ai {
+        background: white;
+        border: 1px solid #e9ecef;
+        color: #333;
+      }
+
+      .input-area {
+        padding: 20px;
+        background: white;
+        border-top: 1px solid #e9ecef;
+        display: flex;
+        gap: 10px;
+      }
+
+      #user-input {
+        flex: 1;
+        padding: 15px;
+        border: 2px solid #e9ecef;
+        border-radius: 25px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+
+      #user-input:focus {
+        border-color: #667eea;
+      }
+
+      #send-btn {
+        padding: 15px 25px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+      }
+
+      #send-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .demo-responses {
+        padding: 20px;
+        background: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+      }
+
+      .demo-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .demo-btn {
+        padding: 8px 15px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s ease;
+      }
+
+      .demo-btn:hover {
+        background: #5a67d8;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .note {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">🤖 MultimodalExpert AI Chat (Demo)</div>
+
+      <div class="chat-area" id="chat-area">
+        <div class="message ai">
+          <strong>🤖 MultimodalExpert:</strong><br />
+          Hello! This is a demo of the MultimodalExpert AI interface.<br />
+          Try the sample questions below or type your own message!<br /><br />
+          <strong>Features:</strong><br />
+          • Direct answers first<br />
+          • Step-by-step explanations<br />
+          • Multi-format support<br />
+          • No unnecessary fluff
+        </div>
+      </div>
+
+      <div class="input-area">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Type your message here..."
+          onkeypress="handleKeyPress(event)"
+        />
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+
+      <div class="demo-responses">
+        <strong>💡 Try these sample questions:</strong>
+        <div class="demo-buttons">
+          <button class="demo-btn" onclick="demoQuestion('What is AI?')">
+            What is AI?
+          </button>
+          <button
+            class="demo-btn"
+            onclick="demoQuestion('Write a Python function')"
+          >
+            Write Python function
+          </button>
+          <button
+            class="demo-btn"
+            onclick="demoQuestion('Create a report on AI trends')"
+          >
+            Create report
+          </button>
+          <button
+            class="demo-btn"
+            onclick="demoQuestion('Generate an image of a robot')"
+          >
+            Generate image
+          </button>
+          <button
+            class="demo-btn"
+            onclick="demoQuestion('Search for latest AI news')"
+          >
+            Search AI news
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Note:</strong> This is a static HTML demo. For full functionality,
+      run the Python web server with:<br />
+      <code>python chat_web.py</code>
+    </div>
+
+    <script>
+      // Simulated AI responses (since we can't run Python in static HTML)
+      const demoResponses = {
+        "What is AI?":
+          "**Direct Response:**\\nArtificial Intelligence is the simulation of human intelligence in machines designed to think and learn like humans.\\n\\n**Approach:**\\n1. Understand the core question\\n2. Provide direct answer\\n3. Break down complex parts step-by-step\\n4. Offer additional context if needed",
+
+        "Write a Python function":
+          "**Code Generation:**\\nI'll provide complete, production-ready code.\\n\\n**Steps:**\\n1. Clarify requirements and constraints\\n2. Design solution architecture\\n3. Write clean, documented code\\n4. Include usage examples and testing",
+
+        "Create a report on AI trends":
+          "**Document Generation:**\\nI'll create structured Markdown content suitable for PDF conversion.\\n\\n**Steps:**\\n1. Analyze your requirements\\n2. Structure content with clear headings\\n3. Add formatting for professional appearance\\n4. Provide conversion-ready Markdown",
+
+        "Generate an image of a robot":
+          "**Image Generation:**\\nI'll provide detailed DALL-E style prompts or SVG code.\\n\\n**Steps:**\\n1. Understand the visual concept\\n2. Create detailed prompt specifications\\n3. Include style, colors, and composition details\\n4. Provide SVG code if applicable",
+
+        "Search for latest AI news":
+          "**Direct Response:**\\nProcessing your query...\\n\\nUsing web search to gather current information.\\n\\n**Approach:**\\n1. Understand the core question\\n2. Provide direct answer\\n3. Break down complex parts step-by-step\\n4. Offer additional context if needed",
+      };
+
+      function addMessage(content, isUser = false) {
+        const chatArea = document.getElementById("chat-area");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${isUser ? "user" : "ai"}`;
+
+        if (isUser) {
+          messageDiv.innerHTML = `<strong>You:</strong><br>${content}`;
+        } else {
+          messageDiv.innerHTML = content.replace(/\\n/g, "<br>");
+        }
+
+        chatArea.appendChild(messageDiv);
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("user-input");
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        addMessage(message, true);
+        input.value = "";
+
+        // Simulate AI thinking delay
+        setTimeout(() => {
+          const response = getAIResponse(message);
+          addMessage(response);
+        }, 1000);
+      }
+
+      function getAIResponse(message) {
+        // Check for exact matches first
+        if (demoResponses[message]) {
+          return demoResponses[message];
+        }
+
+        // Check for partial matches
+        const lowerMessage = message.toLowerCase();
+        for (const [key, response] of Object.entries(demoResponses)) {
+          if (lowerMessage.includes(key.toLowerCase().split("?")[0])) {
+            return response;
+          }
+        }
+
+        // Default response for unrecognized queries
+        return "**Direct Response:**\\nProcessing your query...\\n\\n**Approach:**\\n1. Understand the core question\\n2. Provide direct answer\\n3. Break down complex parts step-by-step\\n4. Offer additional context if needed\\n\\n*This is a demo. For full AI responses, run the Python server.*";
+      }
+
+      function demoQuestion(question) {
+        document.getElementById("user-input").value = question;
+        sendMessage();
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      }
+
+      // Focus on input when page loads
+      window.onload = function () {
+        document.getElementById("user-input").focus();
+      };
+    </script>
+  </body>
+</html>

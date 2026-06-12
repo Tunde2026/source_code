@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🤖 MultimodalExpert - Image Gallery Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      .gallery {
+        padding: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .image-card {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .image-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .image-card h3 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+      }
+
+      .svg-container {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px 0;
+        border: 1px solid #e9ecef;
+      }
+
+      .code-section {
+        background: #f1f3f4;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+        text-align: left;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+        word-break: break-all;
+        border: 1px solid #ddd;
+      }
+
+      .back-button {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin: 20px;
+        transition: background 0.3s ease;
+      }
+
+      .back-button:hover {
+        background: #5a67d8;
+      }
+
+      .note {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🎨 AI-Generated Images</h1>
+        <p>MultimodalExpert can create SVG images and DALL-E prompts</p>
+      </div>
+
+      <div class="gallery">
+        <div class="image-card">
+          <h3>🤖 Robot</h3>
+          <div class="svg-container">
+            <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+              <rect
+                x="50"
+                y="50"
+                width="100"
+                height="100"
+                fill="#4A90E2"
+                stroke="#333"
+                stroke-width="2"
+              />
+              <circle cx="75" cy="75" r="10" fill="#333" />
+              <circle cx="125" cy="75" r="10" fill="#333" />
+              <rect x="70" y="100" width="60" height="30" fill="#666" />
+              <text
+                x="100"
+                y="180"
+                text-anchor="middle"
+                fill="#333"
+                font-family="Arial"
+                font-size="12"
+              >
+                🤖 Robot
+              </text>
+            </svg>
+          </div>
+          <div class="code-section">
+            &lt;svg width="200" height="200"
+            xmlns="http://www.w3.org/2000/svg"&gt; &lt;rect x="50" y="50"
+            width="100" height="100" fill="#4A90E2" stroke="#333"
+            stroke-width="2"/&gt; &lt;circle cx="75" cy="75" r="10"
+            fill="#333"/&gt; &lt;circle cx="125" cy="75" r="10" fill="#333"/&gt;
+            &lt;rect x="70" y="100" width="60" height="30" fill="#666"/&gt;
+            &lt;text x="100" y="180" text-anchor="middle" fill="#333"
+            font-family="Arial" font-size="12"&gt;🤖 Robot&lt;/text&gt;
+            &lt;/svg&gt;
+          </div>
+        </div>
+
+        <div class="image-card">
+          <h3>🐱 Cat</h3>
+          <div class="svg-container">
+            <svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="100" rx="40" ry="30" fill="#FFA500" />
+              <circle cx="100" cy="60" r="25" fill="#FFA500" />
+              <polygon points="85,45 90,25 95,45" fill="#FFA500" />
+              <polygon points="105,45 110,25 115,45" fill="#FFA500" />
+              <circle cx="92" cy="55" r="3" fill="#000" />
+              <circle cx="108" cy="55" r="3" fill="#000" />
+              <polygon points="98,65 102,65 100,70" fill="#000" />
+              <path
+                d="M 100 70 Q 95 75 90 70"
+                stroke="#000"
+                stroke-width="1"
+                fill="none"
+              />
+              <path
+                d="M 100 70 Q 105 75 110 70"
+                stroke="#000"
+                stroke-width="1"
+                fill="none"
+              />
+              <path
+                d="M 140 100 Q 160 80 155 100"
+                stroke="#FFA500"
+                stroke-width="8"
+                fill="none"
+              />
+              <text
+                x="100"
+                y="140"
+                text-anchor="middle"
+                fill="#333"
+                font-family="Arial"
+                font-size="12"
+              >
+                🐱 Cat
+              </text>
+            </svg>
+          </div>
+          <div class="code-section">
+            &lt;svg width="200" height="150"
+            xmlns="http://www.w3.org/2000/svg"&gt; &lt;ellipse cx="100" cy="100"
+            rx="40" ry="30" fill="#FFA500"/&gt; &lt;circle cx="100" cy="60"
+            r="25" fill="#FFA500"/&gt; &lt;polygon points="85,45 90,25 95,45"
+            fill="#FFA500"/&gt; &lt;polygon points="105,45 110,25 115,45"
+            fill="#FFA500"/&gt; &lt;circle cx="92" cy="55" r="3"
+            fill="#000"/&gt; &lt;circle cx="108" cy="55" r="3" fill="#000"/&gt;
+            &lt;polygon points="98,65 102,65 100,70" fill="#000"/&gt; &lt;path
+            d="M 100 70 Q 95 75 90 70" stroke="#000" stroke-width="1"
+            fill="none"/&gt; &lt;path d="M 100 70 Q 105 75 110 70" stroke="#000"
+            stroke-width="1" fill="none"/&gt; &lt;path d="M 140 100 Q 160 80 155
+            100" stroke="#FFA500" stroke-width="8" fill="none"/&gt; &lt;text
+            x="100" y="140" text-anchor="middle" fill="#333" font-family="Arial"
+            font-size="12"&gt;🐱 Cat&lt;/text&gt; &lt;/svg&gt;
+          </div>
+        </div>
+
+        <div class="image-card">
+          <h3>🌅 Sunset</h3>
+          <div class="svg-container">
+            <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient
+                  id="skyGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #ff6b35; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="50%"
+                    style="stop-color: #f7931e; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #ffd23f; stop-opacity: 1"
+                  />
+                </linearGradient>
+              </defs>
+              <rect width="300" height="200" fill="url(#skyGradient)" />
+              <circle cx="150" cy="80" r="30" fill="#FFD23F" opacity="0.8" />
+              <path
+                d="M 0 150 Q 75 120 150 150 T 300 150 L 300 200 L 0 200 Z"
+                fill="#8B4513"
+              />
+              <text
+                x="150"
+                y="190"
+                text-anchor="middle"
+                fill="#654321"
+                font-family="Arial"
+                font-size="14"
+              >
+                🌅 Sunset
+              </text>
+            </svg>
+          </div>
+          <div class="code-section">
+            &lt;svg width="300" height="200"
+            xmlns="http://www.w3.org/2000/svg"&gt; &lt;defs&gt;
+            &lt;linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%"
+            y2="100%"&gt; &lt;stop offset="0%"
+            style="stop-color:#FF6B35;stop-opacity:1" /&gt; &lt;stop
+            offset="50%" style="stop-color:#F7931E;stop-opacity:1" /&gt;
+            &lt;stop offset="100%" style="stop-color:#FFD23F;stop-opacity:1"
+            /&gt; &lt;/linearGradient&gt; &lt;/defs&gt; &lt;rect width="300"
+            height="200" fill="url(#skyGradient)"/&gt; &lt;circle cx="150"
+            cy="80" r="30" fill="#FFD23F" opacity="0.8"/&gt; &lt;path d="M 0 150
+            Q 75 120 150 150 T 300 150 L 300 200 L 0 200 Z" fill="#8B4513"/&gt;
+            &lt;text x="150" y="190" text-anchor="middle" fill="#654321"
+            font-family="Arial" font-size="14"&gt;🌅 Sunset&lt;/text&gt;
+            &lt;/svg&gt;
+          </div>
+        </div>
+
+        <div class="image-card">
+          <h3>🐶 Dog</h3>
+          <div class="svg-container">
+            <svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="100" rx="45" ry="25" fill="#8B4513" />
+              <circle cx="100" cy="60" r="30" fill="#8B4513" />
+              <ellipse cx="80" cy="45" rx="8" ry="15" fill="#654321" />
+              <ellipse cx="120" cy="45" rx="8" ry="15" fill="#654321" />
+              <circle cx="90" cy="55" r="3" fill="#000" />
+              <circle cx="110" cy="55" r="3" fill="#000" />
+              <ellipse cx="100" cy="70" rx="4" ry="3" fill="#000" />
+              <path
+                d="M 145 90 Q 165 70 160 90"
+                stroke="#8B4513"
+                stroke-width="6"
+                fill="none"
+              />
+              <circle cx="85" cy="80" r="3" fill="#654321" />
+              <circle cx="115" cy="85" r="2" fill="#654321" />
+              <text
+                x="100"
+                y="140"
+                text-anchor="middle"
+                fill="#333"
+                font-family="Arial"
+                font-size="12"
+              >
+                🐶 Dog
+              </text>
+            </svg>
+          </div>
+          <div class="code-section">
+            &lt;svg width="200" height="150"
+            xmlns="http://www.w3.org/2000/svg"&gt; &lt;ellipse cx="100" cy="100"
+            rx="45" ry="25" fill="#8B4513"/&gt; &lt;circle cx="100" cy="60"
+            r="30" fill="#8B4513"/&gt; &lt;ellipse cx="80" cy="45" rx="8"
+            ry="15" fill="#654321"/&gt; &lt;ellipse cx="120" cy="45" rx="8"
+            ry="15" fill="#654321"/&gt; &lt;circle cx="90" cy="55" r="3"
+            fill="#000"/&gt; &lt;circle cx="110" cy="55" r="3" fill="#000"/&gt;
+            &lt;ellipse cx="100" cy="70" rx="4" ry="3" fill="#000"/&gt; &lt;path
+            d="M 145 90 Q 165 70 160 90" stroke="#8B4513" stroke-width="6"
+            fill="none"/&gt; &lt;circle cx="85" cy="80" r="3"
+            fill="#654321"/&gt; &lt;circle cx="115" cy="85" r="2"
+            fill="#654321"/&gt; &lt;text x="100" y="140" text-anchor="middle"
+            fill="#333" font-family="Arial" font-size="12"&gt;🐶
+            Dog&lt;/text&gt; &lt;/svg&gt;
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 20px">
+        <a href="chat_demo.html" class="back-button">← Back to Chat Demo</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>💡 How to use these images:</strong><br />
+      1. Copy the SVG code from the code sections<br />
+      2. Save as a .svg file or paste into HTML<br />
+      3. Use DALL-E prompts with AI image generators for more complex images
+    </div>
+  </body>
+</html>
