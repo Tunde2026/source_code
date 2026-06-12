@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Neurovascular Dynamic Lab - Home</title>
+
+<style>
+    /* ========================================================
+       GLOBAL & RESET STYLES
+       ======================================================== */
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Inter, system-ui, sans-serif;
+        background-color: #F8FAFC;
+        color: #0F172A;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ========================================================
+       HEADER & NAVIGATION STYLES
+       ======================================================== */
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: linear-gradient(135deg, #0A2540 0%, #2563EB 100%);
+        color: white;
+        padding: 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        animation: slideDown 0.8s ease-out forwards;
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        padding: 15px 0;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 18px 16px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    nav a::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: white;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    nav a:hover::before,
+    nav a.active::before {
+        width: 100%;
+    }
+
+    nav a:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+
+    /* Hamburger menu button */
+    .hamburger-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .hamburger-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hamburger-btn img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+    }
+
+    /* Mobile navigation menu */
+    .mobile-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #0A2540 0%, #2563EB 100%);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .mobile-nav.show {
+        display: block;
+    }
+
+    .mobile-nav a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s;
+    }
+
+    .mobile-nav a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav a.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 3px solid white;
+    }
+
+    /* ========================================================
+       HERO SECTION STYLES
+       ======================================================== */
+
+    .hero {
+        background: linear-gradient(135deg, #0A2540, #2563EB);
+        color: white;
+        padding: 90px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        opacity: 0.4;
+        pointer-events: none;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero::before {
+        left: 0;
+        background-image: url('images/download (12).jpeg');
+        animation: floatAndSwapLeft 14s ease-in-out infinite;
+        mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+        -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .hero::after {
+        right: 0;
+        background-image: url('images/Mental Health Tips.jpeg');
+        animation: floatAndSwapRight 14s ease-in-out infinite;
+        mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+        -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
+    @keyframes floatAndSwapLeft {
+        0%,
+        100% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+        5%,
+        65% {
+            opacity: 0.4;
+            transform: translateY(0);
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes floatAndSwapRight {
+        0%,
+        100% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+        5%,
+        65% {
+            opacity: 0.4;
+            transform: translateY(0);
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        border-right: 3px solid white;
+        white-space: nowrap;
+        animation: typewriter 4s steps(35) 0.5s forwards, blink 0.75s step-end infinite;
+        width: 0;
+    }
+
+    @keyframes typewriter {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink {
+        from,
+        to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: white;
+        }
+    }
+
+    .hero p {
+        max-width: 850px;
+        margin: auto;
+        font-size: 1.25rem;
+        position: relative;
+        min-height: 70px;
+        z-index: 2;
+    }
+
+    .rotating-text {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        animation: fade 20s infinite;
+    }
+
+    .rotating-text:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .rotating-text:nth-child(2) {
+        animation-delay: 4s;
+    }
+
+    .rotating-text:nth-child(3) {
+        animation-delay: 8s;
+    }
+
+    .rotating-text:nth-child(4) {
+        animation-delay: 12s;
+    }
+
+    .rotating-text:nth-child(5) {
+        animation-delay: 16s;
+    }
+
+    @keyframes fade {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        10%,
+        25% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        35% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    /* ========================================================
+       BRAND DNA SECTION STYLES (Mission, Vision, Values)
+       ======================================================== */
+
+    .brand-dna {
+        text-align: center;
+        background: linear-gradient(135deg, #0A2540 0%, #1e3a5f 100%);
+        color: white;
+        padding: 60px 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .brand-dna::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(34, 211, 238, 0.3) 0%, transparent 50%);
+        animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+        0%,
+        100% {
+            opacity: 0.5;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    }
+
+    .brand-dna::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+        animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            transform: translate(-100%, -100%) rotate(45deg);
+        }
+        100% {
+            transform: translate(100%, 100%) rotate(45deg);
+        }
+    }
+
+    .brand-dna > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .brand-dna h2 {
+        margin: 40px 0 20px;
+        font-size: 2rem;
+        opacity: 0;
+        animation: slideInRotate 1s ease-out forwards;
+    }
+
+    @keyframes slideInRotate {
+        from {
+            opacity: 0;
+            transform: translateX(-100px) rotate(-10deg);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg);
+        }
+    }
+
+    .brand-dna p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        overflow: hidden;
+        border-right: 2px solid white;
+        display: inline-block;
+        animation: typewriterText 3s steps(120) forwards, blinkCursor 0.75s step-end infinite;
+        width: 0;
+    }
+
+    @keyframes typewriterText {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blinkCursor {
+        from,
+        to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: white;
+        }
+    }
+
+    /* ========================================================
+       INTRO SECTION STYLES
+       ======================================================== */
+
+    .intro-section {
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .intro-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        animation: pulseBackground 8s ease-in-out infinite;
+    }
+
+    @keyframes pulseBackground {
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+
+    .intro-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 60px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .intro-text h2 {
+        font-size: 2.5rem;
+        color: #2563EB;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: slideInFromLeft 1s ease-out 0.3s forwards;
+    }
+
+    @keyframes slideInFromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .intro-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #334155;
+        margin-bottom: 20px;
+        opacity: 0;
+        text-align: justify;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .intro-text p:nth-of-type(1) {
+        animation-delay: 0.5s;
+    }
+
+    .intro-text p:nth-of-type(2) {
+        animation-delay: 0.7s;
+    }
+
+    .intro-text p:nth-of-type(3) {
+        animation-delay: 0.9s;
+    }
+
+    .intro-images {
+        position: relative;
+        height: 500px;
+    }
+
+    .intro-img-1 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 70%;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        animation: floatInRight 1.2s ease-out 0.6s forwards, floatImage 6s ease-in-out 2s infinite;
+        z-index: 2;
+    }
+
+    .intro-img-2 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 70%;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        animation: floatInLeft 1.2s ease-out 0.9s forwards, floatImageReverse 6s ease-in-out 2.5s infinite;
+        z-index: 1;
+    }
+
+    @keyframes floatInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100px) rotate(10deg);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg);
+        }
+    }
+
+    @keyframes floatInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-100px) rotate(-10deg);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg);
+        }
+    }
+
+    @keyframes floatImage {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    @keyframes floatImageReverse {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(15px);
+        }
+    }
+
+    /* ========================================================
+       LEARNING SECTION STYLES
+       ======================================================== */
+
+    .learning-content {
+        padding: 80px 40px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(34, 211, 238, 0.05) 100%);
+        color: #0A2540;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .learning-content h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #2563EB;
+        animation: bounceIn 1s ease-out;
+    }
+
+    @keyframes bounceIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .learning-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .learning-card {
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideUp 0.6s ease-out forwards;
+    }
+
+    .learning-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+    }
+
+    .learning-card h3 {
+        color: #2563EB;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .learning-card::before {
+        content: '🧠';
+        font-size: 2rem;
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        animation: rotate 3s ease-in-out infinite;
+        vertical-align: middle;
+    }
+
+    @keyframes rotate {
+        0%,
+        100% {
+            transform: rotate(0deg);
+        }
+        25% {
+            transform: rotate(-10deg);
+        }
+        75% {
+            transform: rotate(10deg);
+        }
+    }
+
+    /* ========================================================
+       WELCOME BOX STYLES
+       ======================================================== */
+
+    .welcome-box {
+        background: white;
+        padding: 45px;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        opacity: 0;
+        animation: fadeInScale 1s ease-out 0.3s forwards;
+    }
+
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .welcome-box li {
+        opacity: 0;
+        animation: slideInLeft 0.5s ease-out forwards;
+    }
+
+    .welcome-box li:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+
+    .welcome-box li:nth-child(2) {
+        animation-delay: 0.6s;
+    }
+
+    .welcome-box li:nth-child(3) {
+        animation-delay: 0.7s;
+    }
+
+    .welcome-box li:nth-child(4) {
+        animation-delay: 0.8s;
+    }
+
+    .welcome-box li:nth-child(5) {
+        animation-delay: 0.9s;
+    }
+
+    .welcome-box li:nth-child(6) {
+        animation-delay: 1s;
+    }
+
+    /* ========================================================
+       BUTTON STYLES
+       ======================================================== */
+
+    .btn {
+        display: inline-block;
+        margin-top: 35px;
+        padding: 14px 36px;
+        background: linear-gradient(135deg, #2563EB, #22D3EE);
+        color: white;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(34, 211, 238, 0.4);
+    }
+
+    /* ========================================================
+       FOOTER STYLES
+       ======================================================== */
+
+    footer {
+        background: linear-gradient(135deg, #0A2540 0%, #1e3a5f 100%);
+        color: white;
+        text-align: center;
+        padding: 35px 20px;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #22D3EE, transparent);
+        animation: scan 3s linear infinite;
+    }
+
+    @keyframes scan {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+        .cta-button {
+        padding: 16px 48px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: white;
+        background: linear-gradient(135deg, #2563EB, #22D3EE);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        position: relative;
+        overflow: hidden;
+        animation: buttonPulse 2s ease-in-out infinite;
+    }
+
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .cta-button:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(34, 211, 238, 0.5);
+    }
+
+    @keyframes buttonPulse {
+        0%, 100% {
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+        50% {
+            box-shadow: 0 8px 40px rgba(34, 211, 238, 0.6);
+        }
+    }
+
+    /* ========================================================
+       UTILITY CLASSES
+       ======================================================== */
+
+    .in-view {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: all 0.8s ease-out;
+    }
+
+    /* ========================================================
+       VIDEO SECTION STYLES
+       ======================================================== */
+
+    .watch-section {
+        /* padding: 80px 0px; */
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.05) 0%, rgba(37, 99, 235, 0.05) 100%);
+        color: #0A2540;
+        position: relative;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .watch-section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #2563EB;
+        animation: bounceIn 1s ease-out;
+    }
+
+    .video-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 16px;
+    }
+
+    .video-description {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 1.1rem;
+        color: #334155;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+        .watch-section {
+            padding: 60px 20px;
+        }
+
+        .watch-section h2 {
+            font-size: 1.8rem;
+        }
+
+        .video-description {
+            font-size: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            white-space: normal;
+            border-right: none;
+            animation: fadeInUp 1s ease-out;
+            width: auto;
+        }
+
+        .brand-dna p {
+            white-space: normal;
+            border-right: none;
+            animation: fadeIn 1s ease-out forwards;
+            width: auto;
+        }
+
+        .intro-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .intro-images {
+            height: 400px;
+        }
+
+        .intro-text h2 {
+            font-size: 1.8rem;
+        }
+
+        .hamburger-btn {
+            display: block;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .header-content {
+            position: relative;
+        }
+
+        nav a {
+            padding: 12px 10px;
+            font-size: 0.85rem;
+        }
+
+        .welcome-box {
+            padding: 30px 20px;
+        }
+
+        .learning-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Mobile responsive header/footer fallback */
+    @media (max-width: 768px) {
+        .intro-images {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            height: auto;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .intro-images img {
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            opacity: 1;
+            transform: none;
+        }
+
+        .intro-img-1,
+        .intro-img-2 {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0A2540 0%, #2563EB 100%) !important;
+            color: white !important;
+        }
+
+        .header-content {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            flex-wrap: nowrap !important;
+            gap: 10px;
+            padding: 10px 16px !important;
+            min-height: auto !important;
+        }
+
+        .logo {
+            font-size: 1rem !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            max-width: calc(100% - 58px) !important;
+            margin: 0;
+        }
+
+        .hamburger-btn {
+            flex: 0 0 auto !important;
+        }
+
+        nav {
+            display: none !important;
+        }
+
+        .hamburger-btn {
+            display: block !important;
+        }
+
+        .mobile-nav {
+            background: linear-gradient(135deg, #0A2540 0%, #2563EB 100%) !important;
+        }
+
+        footer {
+            padding: 30px 18px !important;
+            text-align: center !important;
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .content,
+        .hero,
+        .section,
+        .card,
+        .quiz-panel,
+        .info-panel {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+
+        .button-group,
+        .footer-links,
+        .footer-grid,
+        .author-container,
+        .value-card,
+        .resource-grid {
+            gap: 16px;
+        }
+
+    }
+</style>
+
+<script>
+// HERO TYPEWRITER + ROTATING TEXT
+document.addEventListener('DOMContentLoaded',()=>{
+    // Hamburger menu functionality
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileNav.classList.remove('show');
+            }
+        });
+        
+        // Close mobile nav when clicking a link
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('show');
+            });
+        });
+    }
+
+    const heroH1 = document.querySelector('.hero h1');
+    const rotatingTexts = document.querySelectorAll('.rotating-text');
+    heroH1.addEventListener('animationend',()=>{
+        heroH1.style.borderRight='none';
+        rotatingTexts.forEach((el,i)=>{setTimeout(()=>{el.style.opacity=1;el.style.transform='translateY(0)';},i*1500);});
+    });
+
+    // SCROLL TRIGGER
+    const scrollElements = document.querySelectorAll('.brand-dna h2,.brand-dna p,.intro-text h2,.intro-text p,.intro-img-1,.intro-img-2,.learning-card,.welcome-box,.welcome-box li');
+    const observer = new IntersectionObserver((entries,obs)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('in-view');
+                obs.unobserve(entry.target);
+            }
+        });
+    },{threshold:0.2});
+    scrollElements.forEach(el=>observer.observe(el));
+});
+</script>
+
+</head>
+<body>
+
+<header>
+<div class="header-content">
+    <div class="logo">🧠 Neurovascular Dynamic Lab</div>
+    <button class="hamburger-btn" id="hamburgerBtn">
+        <img src="expand.png" alt="Menu">
+    </button>
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="resources.html">Resources</a>
+        <a href="community.html">Community</a>
+        <a href="research.html">Latest Research</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="active">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="resources.html">Resources</a>
+        <a href="community.html">Community</a>
+        <a href="research.html">Latest Research</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</div>
+</header>
+
+<section class="hero">
+<h1>Welcome to NeuroScience Learning</h1>
+<p>
+    <span class="rotating-text">Unlocking the Mysteries of the Brain</span>
+    <span class="rotating-text">Exploring the Human Brain</span>
+    <span class="rotating-text">Where Science Meets the Mind</span>
+    <span class="rotating-text">The Science Behind Intelligence</span>
+    <span class="rotating-text">Understanding How the Brain Works</span>
+</p>
+</section> 
+
+<section class="brand-dna"> 
+<h2>Our Mission</h2>
+<p>To democratize neuroscience education and make brain science accessible to curious minds worldwide through engaging, evidence-based content.</p>
+
+<h2>Our Vision</h2>
+<p>A world where everyone understands the incredible power of their brain and uses that knowledge to improve their lives and society.</p>
+
+<h2>Our Values</h2>
+<p>Scientific accuracy, accessibility, curiosity, innovation, and a commitment to making complex neuroscience understandable for all.</p>
+</section>
+
+<section class="intro-section">
+<div class="intro-container">
+<div class="intro-text">
+<h2>A Brief Introduction to Neuroscience</h2>
+<p>Neuroscience is the scientific study of the nervous system—a complex network that controls everything you think, feel, and do. From the firing of a single neuron to the orchestration of memories, emotions, and consciousness, neuroscience explores the biological basis of behavior and cognition.</p>
+<p>This fascinating field combines biology, psychology, chemistry, and computer science to unravel the mysteries of the most complex structure in the known universe: the human brain. With approximately 86 billion neurons, each forming thousands of connections, your brain is capable of extraordinary feats of learning, creativity, and adaptation.</p>
+<p>Whether you're curious about how memories form, why we dream, or how diseases like Alzheimer's affect the brain, neuroscience provides the tools and knowledge to understand these phenomena. Join us on this incredible journey into the mind!</p>
+</div>
+<div class="intro-images">
+<img src="images/download (12).jpeg" alt="Brain illustration" class="intro-img-1">
+<img src="images/Mental Health Tips.jpeg" alt="Neuroscience research" class="intro-img-2">
+</div>
+</div>
+</section>
+
+<section class="learning-content">
+<h2>What Will You Learn?</h2>
+<div class="learning-grid">
+<div class="learning-card"><h3>The Basics of Neuroscience</h3><p>Foundation concepts and terminology</p></div>
+<div class="learning-card"><h3>Brain Anatomy</h3><p>Structure and organization of the brain</p></div>
+<div class="learning-card"><h3>Neurons</h3><p>The building blocks of the nervous system</p></div>
+<div class="learning-card"><h3>Brain Signals</h3><p>How neurons communicate</p></div>
+<div class="learning-card"><h3>Cognition & Behavior</h3><p>How we think, decide, and act</p></div>
+<div class="learning-card"><h3>Senses & Movement</h3><p>Perception and motor control</p></div>
+<div class="learning-card"><h3>Brain Health</h3><p>Maintaining optimal brain function</p></div>
+<div class="learning-card"><h3>Research & Future</h3><p>Cutting-edge discoveries</p></div>
+</div>
+</section>
+
+<section class="watch-section">
+<h2>Watch This</h2>
+<div class="video-container">
+
+<iframe src="https://www.youtube.com/embed/KtoQnFWEgMY" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+    
+</iframe>
+</div>
+<p class="video-description">How the Brain Works in Simple Terms - A comprehensive guide to understanding your amazing brain!</p>
+
+
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/WiLhAOaBkSA?start=43" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+    
+</iframe>
+</div>
+</iframe>
+</div>
+
+<p class="video-description">How the Brain Works in Simple Terms - A comprehensive guide to understanding your amazing brain!</p>
+
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/xXk5BOAO7rc" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+    
+</iframe>
+</div>
+</iframe>
+</div>
+
+<p class="video-description">How the Brain Works in Simple Terms - A comprehensive guide to understanding your amazing brain!</p>
+
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/HieUJTLaOZY" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+    
+</iframe>
+</div>
+
+<p class="video-description">How the Brain Works in Simple Terms - A comprehensive guide to understanding your amazing brain!</p>
+
+
+<div style="text-align: center; padding: 60px 20px;">
+    <a href="learn.html"> <button class="cta-button">Start Learning Now</button></a>
+</div>
+
+
+
+<footer>
+<p>&copy; 2026 Neurovascular Dynamic Lab</p>
+<p>Made with 🧠 for curious minds</p>
+
+ <a href='https://www.free-counters.org/'>powered by Free-Counters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=1307ae18c76bfe2379819c0d98c6f694adf30895'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1530488/t/8"></script>
+</footer>
+
+</body>
+</html>
