@@ -1,0 +1,37 @@
+/* Shared site styles */
+:root{
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --primary:#2563eb;
+  --accent:#0ea5e9;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e6eef8;
+  --radius:14px;
+}
+*{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.45}
+.container{max-width:1100px;margin:0 auto;padding:0 18px}
+.site-header{background:var(--surface);border-bottom:1px solid var(--border);}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+.logo{font-weight:700;color:var(--primary);text-decoration:none;font-size:20px}
+.nav{display:flex;gap:12px;align-items:center}
+.nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:10px;transition:background .15s}
+.nav a:hover{background:rgba(37,99,235,0.06);color:var(--primary)}
+.site-footer{background:transparent;border-top:1px solid var(--border);padding:18px 0;margin-top:28px}
+.site-footer .container{display:flex;justify-content:space-between;align-items:center}
+.site-footer small{color:var(--muted)}
+/* Buttons */
+button, .btn{background:var(--primary);color:#fff;border:none;padding:10px 14px;border-radius:12px;cursor:pointer;transition:transform .12s,box-shadow .12s;box-shadow:0 6px 18px rgba(37,99,235,0.12)}
+button:hover, .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,99,235,0.14)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--primary);color:#fff}
+/* Responsive layout helpers */
+.app-grid{display:grid;grid-template-columns:320px 1fr 280px;gap:18px}
+@media (max-width:1100px){.app-grid{grid-template-columns:1fr;}.site-header .container{flex-direction:column;gap:8px}}
+/* Editor title big font fix */
+.title-group input{font-size:32px !important}
+/* Toasts */
+.toast{border-radius:12px;padding:12px 14px}
+/* Small utilities */
+.text-muted{color:var(--muted)}
+`
