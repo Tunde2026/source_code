@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickOn - Flashcard Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset & Theme Design Configuration */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg-color: #0b1329;
+            --surface-color: #1c2541;
+            --input-bg: #111827;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header Layout */
+        header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .badge {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+           
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .badge a{
+             text-decoration: none;
+             color: white;
+        }
+        /* Card Form Layout */
+        .admin-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2.5rem;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            width: 100%;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.20);
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Interactive Notification Banner */
+        .toast-notification {
+            display: none;
+            background-color: rgba(16, 185, 129, 0.15);
+            border: 1px solid var(--success);
+            color: #34d399;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        /* Button Action Sets */
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.85rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .btn-submit:hover {
+            background-color: var(--accent-hover);
+        }
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        /* Real-Time Database Feed List Panel */
+        .feed-section h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .count-indicator {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        
+        .flashcard-list-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+        .flashcard-list-table th, .flashcard-list-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        .flashcard-list-table th {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .flashcard-list-table tr:last-child td {
+            border-bottom: none;
+        }
+        .subject-col {
+            font-weight: 600;
+            color: #60a5fa;
+            white-space: nowrap;
+        }
+        .text-wrap-cell {
+            color: var(--text-main);
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header>
+            <h1>ClickOn Control Panel</h1>
+            <span class="badge">Admin Terminal</span>
+            <span class="badge"><a href="admin.html">Chat Admin Page</a></span>
+        </header>
+
+        <section class="admin-card">
+            <div class="card-title">Create New Flashcard Node</div>
+            
+            <div id="success-toast" class="toast-notification">
+                Flashcard added successfully!
+            </div>
+
+            <form id="admin-flashcard-form">
+                <div class="form-group">
+                    <label for="subject-field">Subject Domain</label>
+                    <input type="text" id="subject-field" required placeholder="e.g., Python, Mathematics, Biology" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="question-field">Question Prompt Text</label>
+                    <textarea id="question-field" required placeholder="Type front-side prompt statement..." class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="answer-field">Answer Resolution Details</label>
+                    <textarea id="answer-field" required placeholder="Type back-side conceptual validation answer..." class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Index & Submit Flashcard</button>
+            </form>
+        </section>
+
+        <section class="feed-section">
+            <h2>
+                Live Database Inventory
+                <span id="live-counter" class="count-indicator">Total Active Elements: 0</span>
+            </h2>
+
+            <div id="list-wrapper">
+                <div class="empty-state">Awaiting communication handshake with Firestore indices...</div>
+            </div>
+        </section>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Explicit Configuration Map
+        const firebaseConfig = {
+            apiKey: "AIzaSyArDmH7Qbxec6LTqPNj0FFp7kAQAfsfsmg",
+            authDomain: "clickon-website.firebaseapp.com",
+            projectId: "clickon-website",
+            storageBucket: "clickon-website.firebasestorage.app",
+            messagingSenderId: "832815696553",
+            appId: "1:832815696553:web:c28bdc41070df46949b7b8",
+            measurementId: "G-861K6ZSMSJ"
+        };
+
+        // Initialize App & Collection references
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const targetCollection = collection(db, "flashcards");
+
+        // UI DOM Selection Items Mapping
+        const flashcardForm = document.getElementById("admin-flashcard-form");
+        const subjectInput = document.getElementById("subject-field");
+        const questionInput = document.getElementById("question-field");
+        const answerInput = document.getElementById("answer-field");
+        const successToast = document.getElementById("success-toast");
+        const listWrapper = document.getElementById("list-wrapper");
+        const liveCounter = document.getElementById("live-counter");
+
+        // 1. DATA SUBMISSION SUBROUTINE PIPELINE
+        flashcardForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Intercept data values
+            const payload = {
+                subject: subjectInput.value.trim(),
+                question: questionInput.value.trim(),
+                answer: answerInput.value.trim(),
+                createdAt: serverTimestamp() // Added to structure elements cleanly chronologically
+            };
+
+            try {
+                // Execute write transaction to Firestore using addDoc()
+                await addDoc(targetCollection, payload);
+
+                // Flash success notice framework interface safely
+                successToast.style.display = "block";
+                
+                // Clear input field state properties
+                flashcardForm.reset();
+
+                // Automate cleaning timeline parameters
+                setTimeout(() => {
+                    successToast.style.display = "none";
+                }, 3500);
+
+            } catch (err) {
+                console.error("Write execution dropped on index nodes:", err);
+                alert("Failed to register document asset: " + err.message);
+            }
+        });
+
+        // 2. REAL-TIME ONSNAPSHOT INVENTORY INTERFACE STREAM
+        // Formulate a query sorted by our timestamp attribute so newest submissions appear upper-most
+        const orderedQuery = query(targetCollection, orderBy("createdAt", "desc"));
+
+        onSnapshot(orderedQuery, (snapshot) => {
+            liveCounter.innerText = `Total Active Elements: ${snapshot.size}`;
+
+            if (snapshot.empty) {
+                listWrapper.innerHTML = `<div class="empty-state">No recorded flashcard nodes exist in the collection collection scope. Add cards above to see them instantly.</div>`;
+                return;
+            }
+
+            // Begin rendering a grid data collection block framework layout
+            let HTMLMarkupBuffer = `
+                <table class="flashcard-list-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Question Block</th>
+                            <th>Answer Block</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                
+                // Content sanitization maps
+                const subject = data.subject || "Undefined Context";
+                const question = data.question || "Empty Prompt";
+                const answer = data.answer || "Empty Response";
+
+                HTMLMarkupBuffer += `
+                    <tr>
+                        <td class="subject-col">${escapeStringHTML(subject)}</td>
+                        <td class="text-wrap-cell">${escapeStringHTML(question)}</td>
+                        <td class="text-wrap-cell">${escapeStringHTML(answer)}</td>
+                    </tr>
+                `;
+            });
+
+            HTMLMarkupBuffer += `
+                    </tbody>
+                </table>
+            `;
+
+            // Flush markup updates directly into the viewport layout
+            listWrapper.innerHTML = HTMLMarkupBuffer;
+
+        }, (error) => {
+            console.error("Live streaming listener connection broke:", error);
+            listWrapper.innerHTML = `<div class="empty-state" style="color: #f87171;">Snapshot synchronization tracking dropped: ${error.message}</div>`;
+        });
+
+        // Intercept data values
+const payload = {
+    subject: subjectInput.value.trim(),
+    question: questionInput.value.trim(),
+    answer: answerInput.value.trim(),
+    createdAt: serverTimestamp(),
+    
+    // Add this exact line to bypass the no-login rule safely
+    secret_passcode: "eMManueL@123" 
+};
+        // Security Utility to eliminate raw HTML string evaluation injection context pathways
+        function escapeStringHTML(str) {
+            return str.replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/"/g, "&quot;")
+                      .replace(/'/g, "&#039;");
+        }
+                      
+    </script>
+</body>
+</html>

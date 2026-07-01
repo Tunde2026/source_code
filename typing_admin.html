@@ -1,0 +1,1935 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClickOn - Typing Test Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <style>
+      /* ==========================================================================
+           1. DESIGN SYSTEM VARIABLES & GLOBAL STYLES
+           ========================================================================== */
+      :root {
+        --bg-main: #0f172a;
+        --bg-card: #1e293b;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --text-main: #ffffff;
+        --text-muted: #94a3b8;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --radius-lg: 16px;
+        --radius-md: 12px;
+        --radius-sm: 8px;
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Status Indicators */
+        --color-success: #10b981;
+        --color-danger: #ef4444;
+        --color-warning: #f59e0b;
+
+        /* Category Badges Theme Matrix */
+        --cat-programming: #3b82f6;
+        --cat-mathematics: #a855f7;
+        --cat-science: #06b6d4;
+        --cat-english: #10b981;
+        --cat-general: #eab308;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", system-ui, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        min-height: 100vh;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Custom Scrollbar Infrastructure */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-main);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* ==========================================================================
+           2. SECURITY FORCE-FIELD SCREEN COVER (AUTH INTERCEPTOR)
+           ========================================================================== */
+      #auth-guard-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--bg-main);
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+      }
+
+      .spinner-ring {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(59, 130, 246, 0.1);
+        border-left-color: var(--primary);
+        border-radius: 50%;
+        animation: ringSpin 0.8s linear infinite;
+      }
+
+      .access-denied-box {
+        text-align: center;
+        background: var(--bg-card);
+        padding: 40px;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        max-width: 450px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+
+      .access-denied-box i {
+        font-size: 4rem;
+        color: var(--color-danger);
+        margin-bottom: 20px;
+        animation: pulseWarning 2s infinite;
+      }
+
+      .access-denied-box h2 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .access-denied-box p {
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* ==========================================================================
+           3. TOAST NOTIFICATION CONTAINER NETWORK
+           ========================================================================== */
+      #notification-center {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 380px;
+        width: calc(100% - 48px);
+      }
+
+      .toast-banner {
+        background: var(--bg-card);
+        border-left: 4px solid var(--primary);
+        padding: 16px;
+        border-radius: 4px var(--radius-sm) var(--radius-sm) 4px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        animation: slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .toast-banner.success {
+        border-left-color: var(--color-success);
+      }
+      .toast-banner.error {
+        border-left-color: var(--color-danger);
+      }
+
+      .toast-icon-box {
+        font-size: 1.2rem;
+      }
+      .success .toast-icon-box {
+        color: var(--color-success);
+      }
+      .error .toast-icon-box {
+        color: var(--color-danger);
+      }
+
+      .toast-content h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .toast-content p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+
+      /* ==========================================================================
+           4. PERSISTENT APPLICATION MANAGEMENT BAR (NAVBAR)
+           ========================================================================== */
+      .app-navbar {
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0 4%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 900;
+      }
+
+      .nav-branding-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text-main);
+      }
+
+      .brand-logo-cube {
+        background: var(--primary);
+        width: 38px;
+        height: 38px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 800;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      }
+
+      .brand-text-identity h1 {
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+      .brand-text-identity h1 span {
+        color: var(--primary);
+      }
+      .brand-text-identity p {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .nav-user-profile {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .user-meta-info {
+        text-align: right;
+        display: none;
+      }
+      @media (min-width: 640px) {
+        .user-meta-info {
+          display: block;
+        }
+      }
+
+      .user-meta-info h5 {
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+      .user-meta-info p {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+      .btn-signout-trigger a{
+        text-decoration: none;
+        color: white;
+        font-weight: bolder;
+      }
+      .btn-signout-trigger {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--color-danger);
+        border: 1px solid rgba(239, 68, 68, 0.15);
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-signout-trigger:hover {
+        background: var(--color-danger);
+        color: white;
+      }
+
+      /* ==========================================================================
+           5. DASHBOARD MAIN COMPOSITOR LAYOUT
+           ========================================================================== */
+      .workspace-container {
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 32px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        flex: 1;
+      }
+
+      /* Statistics Scoreboard Layer */
+      .analytics-grid-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .stat-card-widget {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+      .stat-card-widget:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.4);
+      }
+
+      .stat-card-widget::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--primary);
+      }
+      .stat-card-widget.prog::before {
+        background: var(--cat-programming);
+      }
+      .stat-card-widget.math::before {
+        background: var(--cat-mathematics);
+      }
+      .stat-card-widget.sci::before {
+        background: var(--cat-science);
+      }
+
+      .stat-data-core h4 {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+      }
+      .stat-data-core p {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .stat-icon-envelope {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-muted);
+      }
+      .stat-card-widget.total .stat-icon-envelope {
+        color: var(--primary);
+        background: rgba(59, 130, 246, 0.1);
+      }
+      .stat-card-widget.prog .stat-icon-envelope {
+        color: var(--cat-programming);
+        background: rgba(59, 130, 246, 0.1);
+      }
+      .stat-card-widget.math .stat-icon-envelope {
+        color: var(--cat-mathematics);
+        background: rgba(168, 85, 247, 0.1);
+      }
+      .stat-card-widget.sci .stat-icon-envelope {
+        color: var(--cat-science);
+        background: rgba(6, 182, 212, 0.1);
+      }
+
+      /* Split Screen Splitter Grid */
+      .workspace-split-view {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+      @media (min-width: 1024px) {
+        .workspace-split-view {
+          grid-template-columns: 420px 1fr;
+        }
+      }
+
+      /* Component Cards Style Bases */
+      .control-panel-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+      }
+
+      .panel-heading-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+
+      .panel-heading-row h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .panel-heading-row h2 i {
+        color: var(--primary);
+      }
+
+      /* ==========================================================================
+           6. CAPTURE CONTROL COMPONENTS (FORMS & INPUT DESIGN)
+           ========================================================================== */
+      .form-group-block {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .form-group-block label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .input-text-area,
+      .select-dropdown-custom {
+        width: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        color: var(--text-main);
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: var(--transition);
+      }
+      .input-text-area:focus,
+      .select-dropdown-custom:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .input-text-area {
+        resize: vertical;
+        min-height: 140px;
+        line-height: 1.6;
+      }
+
+      .live-counter-ribbon {
+        display: flex;
+        justify-content: flex-end;
+        gap: 14px;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        margin-top: -14px;
+        margin-bottom: 20px;
+        padding-right: 4px;
+      }
+      .live-counter-ribbon span strong {
+        color: var(--text-main);
+      }
+
+      .btn-action-primary {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: var(--radius-sm);
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+      }
+      .btn-action-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+      .btn-action-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* ==========================================================================
+           7. ACTIVE LIVE STREAM STREAM (PARAGRAPH FEED & SEARCH ENGINE)
+           ========================================================================== */
+      .search-orchestration-bar {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 24px;
+        width: 100%;
+      }
+
+      .search-input-envelope {
+        position: relative;
+        flex: 1;
+      }
+      .search-input-envelope i {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+      .search-field-element {
+        width: 100%;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        padding: 12px 16px 12px 48px;
+        border-radius: var(--radius-sm);
+        font-size: 0.95rem;
+        outline: none;
+        transition: var(--transition);
+      }
+      .search-field-element:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+      }
+
+      .btn-sync-refresh {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        width: 46px;
+        height: 46px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+      .btn-sync-refresh:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .btn-sync-refresh.spinning i {
+        animation: ringSpin 0.6s linear infinite;
+      }
+
+      /* Dynamic Render Feed Track */
+      .live-paragraphs-track {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-height: 400px;
+      }
+
+      .empty-state-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 80px 40px;
+        color: var(--text-muted);
+        text-align: center;
+        border: 2px dashed var(--border-color);
+        border-radius: var(--radius-lg);
+      }
+      .empty-state-card i {
+        font-size: 3rem;
+        opacity: 0.4;
+      }
+
+      /* Document Data Cards Grid Items */
+      .paragraph-document-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: var(--transition);
+        animation: fadeInCard 0.35s ease forwards;
+      }
+      .paragraph-document-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.5);
+      }
+
+      .card-metadata-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .category-pill-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 5px 12px;
+        border-radius: 50px;
+        color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      .category-pill-badge.programming {
+        background: var(--cat-programming);
+      }
+      .category-pill-badge.mathematics {
+        background: var(--cat-mathematics);
+      }
+      .category-pill-badge.science {
+        background: var(--cat-science);
+      }
+      .category-pill-badge.english {
+        background: var(--cat-english);
+      }
+      .category-pill-badge.generalknowledge {
+        background: var(--cat-general);
+      }
+
+      .document-id-tag {
+        font-family: monospace;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        background: rgba(0, 0, 0, 0.2);
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .paragraph-content-viewport {
+        font-size: 0.98rem;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.95);
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
+
+      .card-metrics-row {
+        display: flex;
+        gap: 16px;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        padding: 10px 0;
+      }
+      .card-metrics-row span strong {
+        color: var(--text-main);
+      }
+
+      .card-orchestration-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .creation-date-timestamp {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .action-button-cluster {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-card-utility {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        padding: 8px 14px;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: var(--transition);
+      }
+      .btn-card-utility:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .btn-card-utility.edit:hover {
+        color: var(--primary);
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.2);
+      }
+      .btn-card-utility.delete:hover {
+        color: var(--color-danger);
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.2);
+      }
+
+      /* Skeleton Processing Component Blocks */
+      .skeleton-card-pulse {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .skeleton-line {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.03) 25%,
+          rgba(255, 255, 255, 0.08) 50%,
+          rgba(255, 255, 255, 0.03) 75%
+        );
+        background-size: 200% 100%;
+        animation: pulseLoadingBar 1.5s infinite;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================================
+           8. MODAL FRAMEWORKS (EDITING SYSTEM & CONFIRMATION BOXES)
+           ========================================================================== */
+      .modal-teleport-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(8px);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .modal-teleport-layer.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-window-viewport {
+        background: var(--bg-card);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        width: 100%;
+        max-width: 650px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        transform: scale(0.95) translateY(10px);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        overflow: hidden;
+      }
+      .modal-teleport-layer.active .modal-window-viewport {
+        transform: scale(1) translateY(0);
+      }
+
+      .modal-header-ribbon {
+        padding: 20px 28px;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .modal-header-ribbon h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      .btn-modal-close {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .btn-modal-close:hover {
+        color: white;
+      }
+
+      .modal-body-scroller {
+        padding: 28px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+      }
+
+      .modal-action-footer {
+        padding: 20px 28px;
+        border-top: 1px solid var(--border-color);
+        background: rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+      
+      .btn-modal-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        border: 1px solid var(--border-color);
+        padding: 10px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .btn-modal-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Specific modifications for the mini destructive confirm modal */
+      .modal-window-viewport.confirm-dialog {
+        max-width: 400px;
+      }
+      .confirm-dialog-body {
+        padding: 28px;
+        text-align: center;
+      }
+      .confirm-dialog-body i {
+        font-size: 2.5rem;
+        color: var(--color-danger);
+        margin-bottom: 16px;
+      }
+      .confirm-dialog-body h4 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .confirm-dialog-body p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .btn-modal-danger {
+        background: var(--color-danger);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .btn-modal-danger:hover {
+        background: #dc2626;
+      }
+
+      /* ==========================================================================
+           9. CORE RUNTIME ANIMATION SYSTEM KEYS
+           ========================================================================== */
+      @keyframes ringSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes pulseWarning {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.03);
+        }
+      }
+      @keyframes slideInToast {
+        from {
+          opacity: 0;
+          transform: translateY(-10px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes fadeInCard {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulseLoadingBar {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="auth-guard-overlay">
+      <div class="spinner-ring" id="guard-spinner"></div>
+      <h3
+        id="guard-status-text"
+        style="font-weight: 500; font-size: 1rem; color: var(--text-muted)"
+      >
+        Authenticating session...
+      </h3>
+
+      <div class="access-denied-box" id="guard-denied-payload">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h2>Access Denied</h2>
+        <p>
+          Your account does not have administrative security clearance for the
+          ClickOn testing system. Redirecting to home terminal...
+        </p>
+      </div>
+    </div>
+
+    <div id="notification-center"></div>
+
+    <nav class="app-navbar">
+      <a href="index.html" class="nav-branding-group">
+        <div class="brand-logo-cube">C</div>
+        <div class="brand-text-identity">
+          <h1>ClickOn<span>Hub</span></h1>
+          <p>Typing Engine Admin </p>
+         
+        </div>
+      </a>
+      <div class="nav-user-profile">
+        <div class="user-meta-info">
+          <h5 id="display-admin-email">admin@clickon.com</h5>
+          <p>
+            <i
+              class="fa-solid fa-shield-halved"
+              style="color: var(--primary)"
+            ></i>
+            Root Administrator
+          </p>
+        </div>
+        <button class="btn-signout-trigger" id="btn-logout">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          
+        </button>
+        <button class="btn-signout-trigger" id="btn-logout">
+           <a href="admin.html">Back</a> <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          
+        </button>
+      </div>
+    </nav>
+
+    <main class="workspace-container">
+      <section class="analytics-grid-row">
+        <div class="stat-card-widget total">
+          <div class="stat-data-core">
+            <h4>Total Paragraphs</h4>
+            <p id="stat-total-count">00</p>
+          </div>
+          <div class="stat-icon-envelope">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+        </div>
+        <div class="stat-card-widget prog">
+          <div class="stat-data-core">
+            <h4>Programming</h4>
+            <p id="stat-prog-count">00</p>
+          </div>
+          <div class="stat-icon-envelope"><i class="fa-solid fa-code"></i></div>
+        </div>
+        <div class="stat-card-widget math">
+          <div class="stat-data-core">
+            <h4>Mathematics</h4>
+            <p id="stat-math-count">00</p>
+          </div>
+          <div class="stat-icon-envelope">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+        </div>
+        <div class="stat-card-widget sci">
+          <div class="stat-data-core">
+            <h4>Science</h4>
+            <p id="stat-sci-count">00</p>
+          </div>
+          <div class="stat-icon-envelope">
+            <i class="fa-solid fa-flask"></i>
+          </div>
+        </div>
+      </section>
+
+      <div class="workspace-split-view">
+        <aside class="control-panel-card">
+          <div class="panel-heading-row">
+            <h2><i class="fa-solid fa-square-plus"></i> New Paragraph</h2>
+          </div>
+          <form id="add-paragraph-form" onsubmit="return false;">
+            <div class="form-group-block">
+              <label for="input-add-text">Paragraph Content Text</label>
+              <textarea
+                id="input-add-text"
+                class="input-text-area"
+                placeholder="Enter paragraph content to be loaded directly to live typing terminal systems..."
+                required
+              ></textarea>
+            </div>
+            <div class="live-counter-ribbon">
+              <span>Words: <strong id="add-word-count">0</strong></span>
+              <span>Characters: <strong id="add-char-count">0</strong></span>
+            </div>
+
+            <div class="form-group-block">
+              <label for="select-add-category"
+                >System Stream Category Classification</label
+              >
+              <select
+                id="select-add-category"
+                class="select-dropdown-custom"
+                required
+              >
+                <option value="Programming">Programming</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+                <option value="General Knowledge">General Knowledge</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              id="btn-submit-paragraph"
+              class="btn-action-primary"
+            >
+              <i class="fa-solid fa-cloud-arrow-up"></i> Add Paragraph Object
+            </button>
+          </form>
+        </aside>
+
+        <section style="display: flex; flex-direction: column; width: 100%">
+          <div class="search-orchestration-bar">
+            <div class="search-input-envelope">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                id="search-filter-input"
+                class="search-field-element"
+                placeholder="Filter active content stream strings instantly by keywords or categories..."
+              />
+            </div>
+            <button
+              class="btn-sync-refresh"
+              id="btn-manual-sync"
+              title="Force Refresh Realtime Stream Interceptors"
+            >
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+          </div>
+
+          <div class="live-paragraphs-track" id="paragraphs-rendering-deck">
+            <div class="skeleton-card-pulse">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div
+                  class="skeleton-line"
+                  style="width: 100px; height: 22px"
+                ></div>
+                <div
+                  class="skeleton-line"
+                  style="width: 140px; height: 18px"
+                ></div>
+              </div>
+              <div
+                class="skeleton-line"
+                style="width: 100%; height: 16px; margin-top: 8px"
+              ></div>
+              <div class="skeleton-line" style="width: 95%; height: 16px"></div>
+              <div class="skeleton-line" style="width: 40%; height: 16px"></div>
+              <div
+                class="skeleton-line"
+                style="width: 100%; height: 1px; margin-top: 10px"
+              ></div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div
+                  class="skeleton-line"
+                  style="width: 120px; height: 14px"
+                ></div>
+                <div
+                  class="skeleton-line"
+                  style="width: 160px; height: 32px"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="modal-teleport-layer" id="modal-editing-portal">
+      <div class="modal-window-viewport">
+        <div class="modal-header-ribbon">
+          <h3>
+            <i
+              class="fa-solid fa-pen-to-square"
+              style="color: var(--primary); margin-right: 8px"
+            ></i>
+            Edit Paragraph Data Token
+          </h3>
+          <button class="btn-modal-close" onclick="closeEditingModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <form id="edit-paragraph-form" onsubmit="return false;">
+          <input type="hidden" id="edit-target-doc-id" />
+          <div class="modal-body-scroller">
+            <div class="form-group-block">
+              <label for="input-edit-text">Paragraph Content Text String</label>
+              <textarea
+                id="input-edit-text"
+                class="input-text-area"
+                required
+              ></textarea>
+            </div>
+            <div class="live-counter-ribbon">
+              <span>Words: <strong id="edit-word-count">0</strong></span>
+              <span>Characters: <strong id="edit-char-count">0</strong></span>
+            </div>
+
+            <div class="form-group-block">
+              <label for="select-edit-category"
+                >Target Categorization Mapping</label
+              >
+              <select
+                id="select-edit-category"
+                class="select-dropdown-custom"
+                required
+              >
+                <option value="Programming">Programming</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+                <option value="General Knowledge">General Knowledge</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-action-footer">
+            <button
+              type="button"
+              class="btn-modal-secondary"
+              onclick="closeEditingModal()"
+            >
+              Cancel Actions
+            </button>
+            <button
+              type="submit"
+              id="btn-save-edit-execution"
+              class="btn-action-primary"
+              style="width: auto; padding: 10px 24px"
+            >
+              Save Database Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-teleport-layer" id="modal-delete-confirmation-gate">
+      <div class="modal-window-viewport confirm-dialog">
+        <input type="hidden" id="delete-target-doc-id" />
+        <div class="confirm-dialog-body">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <h4>Confirm Data Removal</h4>
+          <p>
+            Are you sure you want to permanently delete this paragraph document?
+            This data operation cannot be undone and will drop out of terminal
+            instances immediately.
+          </p>
+        </div>
+        <div
+          class="modal-action-footer"
+          style="
+            background: transparent;
+            justify-content: center;
+            padding-bottom: 28px;
+            gap: 16px;
+          "
+        >
+          <button
+            type="button"
+            class="btn-modal-secondary"
+            onclick="closeDeletionModal()"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            id="btn-confirm-delete-execution"
+            class="btn-modal-danger"
+          >
+            Confirm Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      // Import elements from standard Google Firebase JS CDN distribution channels
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        doc,
+        updateDoc,
+        deleteDoc,
+        query,
+        orderBy,
+        onSnapshot,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // Map existing standard production platform application configuration variables
+      const firebaseConfig = {
+        apiKey: "AIzaSyArDmH7Qbxec6LTqPNj0FFp7kAQAfsfsmg",
+        authDomain: "clickon-website.firebaseapp.com",
+        projectId: "clickon-website",
+        storageBucket: "clickon-website.firebasestorage.app",
+        messagingSenderId: "832815696553",
+        appId: "1:832815696553:web:c28bdc41070df46949b7b8",
+      };
+
+      // Initialize Cloud Engine instances
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("User logged in:");
+          console.log(user.email);
+        } else {
+          console.log("No user logged in");
+        }
+      });
+      const db = getFirestore(app);
+
+      // Core Global Application State Management Struct
+      const AppState = {
+        // Updated Security Rules Target Whitelist
+        allowedAdmins: [
+          "aduraemmanuel123@gmail.com",
+          "ojoige831@gmail.com",
+          "ajibadetunde278@gmail.com",
+        ],
+        unfilteredDataset: [],
+        activeStreamUnsubscribeHook: null,
+        searchQueryString: "",
+      };
+
+      // UI Document Core Elements Mapping References
+      const DOM = {
+        authOverlay: document.getElementById("auth-guard-overlay"),
+        guardSpinner: document.getElementById("guard-spinner"),
+        guardStatusText: document.getElementById("guard-status-text"),
+        guardDeniedPayload: document.getElementById("guard-denied-payload"),
+        displayAdminEmail: document.getElementById("display-admin-email"),
+        btnLogout: document.getElementById("btn-logout"),
+
+        // Stats UI Displays
+        statTotal: document.getElementById("stat-total-count"),
+        statProg: document.getElementById("stat-prog-count"),
+        statMath: document.getElementById("stat-math-count"),
+        statSci: document.getElementById("stat-sci-count"),
+
+        // Management Workspace Engine Fields
+        addForm: document.getElementById("add-paragraph-form"),
+        addText: document.getElementById("input-add-text"),
+        addCategory: document.getElementById("select-add-category"),
+        addWordCount: document.getElementById("add-word-count"),
+        addCharCount: document.getElementById("add-char-count"),
+        btnSubmitParagraph: document.getElementById("btn-submit-paragraph"),
+
+        // Data Pipeline Stream Nodes
+        searchField: document.getElementById("search-filter-input"),
+        btnManualSync: document.getElementById("btn-manual-sync"),
+        paragraphsDeck: document.getElementById("paragraphs-rendering-deck"),
+
+        // Modal DOM Overlay References
+        editModalPortal: document.getElementById("modal-editing-portal"),
+        editForm: document.getElementById("edit-paragraph-form"),
+        editText: document.getElementById("input-edit-text"),
+        editCategory: document.getElementById("select-edit-category"),
+        editWordCount: document.getElementById("edit-word-count"),
+        editCharCount: document.getElementById("edit-char-count"),
+        editTargetId: document.getElementById("edit-target-doc-id"),
+        btnSaveEdit: document.getElementById("btn-save-edit-execution"),
+
+        deleteModalPortal: document.getElementById(
+          "modal-delete-confirmation-gate",
+        ),
+        deleteTargetId: document.getElementById("delete-target-doc-id"),
+        btnConfirmDelete: document.getElementById(
+          "btn-confirm-delete-execution",
+        ),
+
+        notificationCenter: document.getElementById("notification-center"),
+      };
+
+      // ==========================================================================
+      // AUTHENTICATION GUARD CONTROL IMPLEMENTATION RUNTIME
+      // ==========================================================================
+      // Change this block in your typing_admin.html file:
+      onAuthStateChanged(auth, (user) => {
+        // Add .toLowerCase() right here to enforce clean comparisons:
+        if (
+          user &&
+          user.email &&
+          AppState.allowedAdmins.includes(user.email.toLowerCase().trim())
+        ) {
+          // Initialize authorized dashboard context layout systems
+          DOM.displayAdminEmail.textContent = user.email;
+          liftSecurityShieldOverlay();
+          initializeRealtimeDatabaseSynchronization();
+        } else {
+          // Trigger access restrictions interface behaviors
+          triggerAccessDeniedProtocol();
+        }
+      });
+
+      function liftSecurityShieldOverlay() {
+        DOM.authOverlay.style.opacity = "0";
+        setTimeout(() => {
+          DOM.authOverlay.style.display = "none";
+        }, 400);
+      }
+
+      function triggerAccessDeniedProtocol() {
+        if (AppState.activeStreamUnsubscribeHook)
+          AppState.activeStreamUnsubscribeHook();
+        DOM.guardSpinner.style.display = "none";
+        DOM.guardStatusText.style.display = "none";
+        DOM.guardDeniedPayload.style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 3000);
+      }
+
+      // Session Termination Action Link Trigger Event Wire
+      DOM.btnLogout.addEventListener("click", async () => {
+        try {
+          if (AppState.activeStreamUnsubscribeHook)
+            AppState.activeStreamUnsubscribeHook();
+          await signOut(auth);
+          window.location.href = "index.html";
+        } catch (error) {
+          spawnNotificationToast(
+            "Logout Error Instance",
+            "Unable to close session cleanly.",
+            "error",
+          );
+        }
+      });
+
+      // ==========================================================================
+      // LIVE REALTIME CORE SYNCHRONIZATION DATA BUS ENGINE
+      // ==========================================================================
+      function initializeRealtimeDatabaseSynchronization() {
+        if (AppState.activeStreamUnsubscribeHook)
+          AppState.activeStreamUnsubscribeHook();
+
+        DOM.btnManualSync.classList.add("spinning");
+        const typingCollectionRef = collection(db, "typingTexts");
+        const synchronizedStreamQuery = query(
+          typingCollectionRef,
+          orderBy("createdAt", "desc"),
+        );
+
+        AppState.activeStreamUnsubscribeHook = onSnapshot(
+          synchronizedStreamQuery,
+          (dataSnapshot) => {
+            AppState.unfilteredDataset = [];
+
+            dataSnapshot.forEach((documentNode) => {
+              const extractedDocumentPayload = documentNode.data();
+              extractedDocumentPayload.id = documentNode.id;
+              AppState.unfilteredDataset.push(extractedDocumentPayload);
+            });
+
+            recalculateDashboardStatisticalScores(AppState.unfilteredDataset);
+            renderFilteredParagraphDeckDisplay();
+
+            setTimeout(() => {
+              DOM.btnManualSync.classList.remove("spinning");
+            }, 500);
+          },
+          (streamRuntimeError) => {
+            console.error(
+              "Critical Stream Fault Intercepted: ",
+              streamRuntimeError,
+            );
+            spawnNotificationToast(
+              "Sync Channel Engine Fault",
+              "Could not stream data from database instances.",
+              "error",
+            );
+            DOM.btnManualSync.classList.remove("spinning");
+          },
+        );
+      }
+
+      // Re-establish network channels via manual controls hook
+      DOM.btnManualSync.addEventListener("click", () => {
+        initializeRealtimeDatabaseSynchronization();
+        spawnNotificationToast(
+          "Channel Synced",
+          "Re-synchronized live application tracking listeners.",
+          "success",
+        );
+      });
+
+      // ==========================================================================
+      // METRICS EVALUATION & AGGREGATE CALCULATION ANALYTICS RUNTIMES
+      // ==========================================================================
+      function recalculateDashboardStatisticalScores(datasetArray) {
+        const Tallies = {
+          total: 0,
+          programming: 0,
+          mathematics: 0,
+          science: 0,
+        };
+        Tallies.total = datasetArray.length;
+
+        datasetArray.forEach((item) => {
+          const standardizedCategoryKey = (item.category || "")
+            .toLowerCase()
+            .trim();
+          if (standardizedCategoryKey === "programming") Tallies.programming++;
+          else if (standardizedCategoryKey === "mathematics")
+            Tallies.mathematics++;
+          else if (standardizedCategoryKey === "science") Tallies.science++;
+        });
+
+        DOM.statTotal.textContent = padNumericStringWithLeadingZeros(
+          Tallies.total,
+        );
+        DOM.statProg.textContent = padNumericStringWithLeadingZeros(
+          Tallies.programming,
+        );
+        DOM.statMath.textContent = padNumericStringWithLeadingZeros(
+          Tallies.mathematics,
+        );
+        DOM.statSci.textContent = padNumericStringWithLeadingZeros(
+          Tallies.science,
+        );
+      }
+
+      function calculateStringWordCountValue(textString) {
+        const prunedArray = textString.trim().split(/\s+/);
+        return prunedArray[0] === "" ? 0 : prunedArray.length;
+      }
+
+      function padNumericStringWithLeadingZeros(numericValue) {
+        return numericValue < 10 ? `0${numericValue}` : numericValue;
+      }
+
+      // ==========================================================================
+      // DYNAMIC RENDERING INTERFACE INTERPRETER SUBSYSTEM
+      // ==========================================================================
+      function renderFilteredParagraphDeckDisplay() {
+        DOM.paragraphsDeck.innerHTML = "";
+
+        const processedSearchQueryString = AppState.searchQueryString
+          .toLowerCase()
+          .trim();
+        const compiledFilteredDataset = AppState.unfilteredDataset.filter(
+          (record) => {
+            return (
+              record.text.toLowerCase().includes(processedSearchQueryString) ||
+              record.category
+                .toLowerCase()
+                .includes(processedSearchQueryString) ||
+              record.id.toLowerCase().includes(processedSearchQueryString)
+            );
+          },
+        );
+
+        if (compiledFilteredDataset.length === 0) {
+          DOM.paragraphsDeck.innerHTML = `
+                    <div class="empty-state-card">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3>No Typing Materials Tracked</h3>
+                        <p>No document structures map to your active parameters in this network stream view.</p>
+                    </div>
+                `;
+          return;
+        }
+
+        compiledFilteredDataset.forEach((docItem) => {
+          const totalWordsCalculated = calculateStringWordCountValue(
+            docItem.text,
+          );
+          const totalCharsCalculated = docItem.text.length;
+
+          // Process Date conversions gracefully
+          let formattedTimestampString = "Processing Sync...";
+          if (
+            docItem.createdAt &&
+            typeof docItem.createdAt.toDate === "function"
+          ) {
+            const nativeDateObjectInstance = docItem.createdAt.toDate();
+            formattedTimestampString =
+              nativeDateObjectInstance.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+          }
+
+          const documentCardMarkupWrapper = document.createElement("article");
+          documentCardMarkupWrapper.className = "paragraph-document-card";
+          documentCardMarkupWrapper.id = `card-node-entity-${docItem.id}`;
+
+          // Clean configuration parameters to safely display values securely
+          const sanitizedCategorySlug = docItem.category
+            .replace(/\s+/g, "")
+            .toLowerCase();
+
+          documentCardMarkupWrapper.innerHTML = `
+                    <div class="card-metadata-header">
+                        <span class="category-pill-badge ${sanitizedCategorySlug}">${escapeHtmlContent(docItem.category)}</span>
+                        <div class="document-id-tag">
+                            <i class="fa-solid fa-fingerprint"></i> ID: <span>${docItem.id}</span>
+                        </div>
+                    </div>
+                    <div class="paragraph-content-viewport">${escapeHtmlContent(docItem.text)}</div>
+                    <div class="card-metrics-row">
+                        <span>Words: <strong>${totalWordsCalculated}</strong></span>
+                        <span>Characters: <strong>${totalCharsCalculated}</strong></span>
+                    </div>
+                    <div class="card-orchestration-footer">
+                        <div class="creation-date-timestamp">
+                            <i class="fa-solid fa-calendar-day"></i> ${formattedTimestampString}
+                        </div>
+                        <div class="action-button-cluster">
+                            <button class="btn-card-utility copy-action-trigger" data-id="${docItem.id}"><i class="fa-solid fa-copy"></i> Copy</button>
+                            <button class="btn-card-utility edit" data-id="${docItem.id}"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                            <button class="btn-card-utility delete" data-id="${docItem.id}"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                        </div>
+                    </div>
+                `;
+
+          // Bind functional parameters dynamically inside containment scopes
+          documentCardMarkupWrapper
+            .querySelector(".copy-action-trigger")
+            .addEventListener("click", () => {
+              executeClipboardWriteTransaction(docItem.text);
+            });
+          documentCardMarkupWrapper
+            .querySelector(".btn-card-utility.edit")
+            .addEventListener("click", () => {
+              openEditingModal(docItem);
+            });
+          documentCardMarkupWrapper
+            .querySelector(".btn-card-utility.delete")
+            .addEventListener("click", () => {
+              openDeletionModal(docItem.id);
+            });
+
+          DOM.paragraphsDeck.appendChild(documentCardMarkupWrapper);
+        });
+      }
+
+      // Live Key Event Capture Pipeline on Search Field Infrastructure
+      DOM.searchField.addEventListener("input", (inputEvent) => {
+        AppState.searchQueryString = inputEvent.target.value;
+        renderFilteredParagraphDeckDisplay();
+      });
+
+      // ==========================================================================
+      // TEXT INPUT LIVE COUNT TALLY UTILITIES
+      // ==========================================================================
+      function executeLiveInputCounterSync(
+        textInputField,
+        wordsCounterElement,
+        charsCounterElement,
+      ) {
+        const rawTextStringPayload = textInputField.value;
+        wordsCounterElement.textContent =
+          calculateStringWordCountValue(rawTextStringPayload);
+        charsCounterElement.textContent = rawTextStringPayload.length;
+      }
+
+      DOM.addText.addEventListener("input", () => {
+        executeLiveInputCounterSync(
+          DOM.addText,
+          DOM.addWordCount,
+          DOM.addCharCount,
+        );
+      });
+
+      DOM.editText.addEventListener("input", () => {
+        executeLiveInputCounterSync(
+          DOM.editText,
+          DOM.editWordCount,
+          DOM.editCharCount,
+        );
+      });
+
+      // ==========================================================================
+      // ASYNC DATABASE CREATE (ADD) PARAGRAPH CONTROLLER INTERACTION
+      // ==========================================================================
+      DOM.addForm.addEventListener("submit", async (submissionEvent) => {
+        submissionEvent.preventDefault();
+
+        const rawContentText = DOM.addText.value.trim();
+        const selectedCategoryValue = DOM.addCategory.value;
+
+        if (!rawContentText) {
+          spawnNotificationToast(
+            "Form Submission Fault",
+            "Paragraph tracking text arrays cannot be blank.",
+            "error",
+          );
+          return;
+        }
+
+        toggleFormActionProcessingStates(
+          DOM.btnSubmitParagraph,
+          true,
+          "Uploading document entity...",
+        );
+
+        try {
+          await addDoc(collection(db, "typingTexts"), {
+            text: rawContentText,
+            category: selectedCategoryValue,
+            createdAt: serverTimestamp(),
+          });
+
+          DOM.addForm.reset();
+          executeLiveInputCounterSync(
+            DOM.addText,
+            DOM.addWordCount,
+            DOM.addCharCount,
+          );
+          spawnNotificationToast(
+            "Paragraph Tracked Successfully",
+            "Material uploaded directly to active ecosystem instances.",
+            "success",
+          );
+        } catch (error) {
+          console.error("Document Insertion Blocked Error: ", error);
+          spawnNotificationToast(
+            "Transaction Aborted Instance",
+            "Database persistence layer rejected asset entity injection.",
+            "error",
+          );
+        } finally {
+          toggleFormActionProcessingStates(
+            DOM.btnSubmitParagraph,
+            false,
+            '<i class="fa-solid fa-cloud-arrow-up"></i> Add Paragraph Object',
+          );
+        }
+      });
+
+      // ==========================================================================
+      // ASYNC UPDATE (EDIT) PARAGRAPH WORKSPACE TRANSFORMATION MODAL
+      // ==========================================================================
+      window.openEditingModal = function (documentRecordPayload) {
+        DOM.editTargetId.value = documentRecordPayload.id;
+        DOM.editText.value = documentRecordPayload.text;
+        DOM.editCategory.value = documentRecordPayload.category;
+
+        executeLiveInputCounterSync(
+          DOM.editText,
+          DOM.editWordCount,
+          DOM.editCharCount,
+        );
+        DOM.editModalPortal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      };
+
+      window.closeEditingModal = function () {
+        DOM.editModalPortal.classList.remove("active");
+        document.body.style.overflow = "";
+        DOM.editForm.reset();
+      };
+
+      DOM.editForm.addEventListener("submit", async (updateSubmitEvent) => {
+        updateSubmitEvent.preventDefault();
+
+        const targetedDocumentId = DOM.editTargetId.value;
+        const updatedContentTextString = DOM.editText.value.trim();
+        const updatedCategoryMappingValue = DOM.editCategory.value;
+
+        if (!updatedContentTextString) {
+          spawnNotificationToast(
+            "Input Discrepancy",
+            "Paragraph update blocks require alphanumeric content.",
+            "error",
+          );
+          return;
+        }
+
+        toggleFormActionProcessingStates(DOM.btnSaveEdit, true, "Saving...");
+
+        try {
+          const explicitDocumentReferencePointer = doc(
+            db,
+            "typingTexts",
+            targetedDocumentId,
+          );
+          await updateDoc(explicitDocumentReferencePointer, {
+            text: updatedContentTextString,
+            category: updatedCategoryMappingValue,
+          });
+
+          spawnNotificationToast(
+            "Revisions Persisted",
+            "Database document token synced successfully across operational systems.",
+            "success",
+          );
+          closeEditingModal();
+
+          // Smooth scroll to update item element index anchors
+          const targetNodeDOMElement = document.getElementById(
+            `card-node-entity-${targetedDocumentId}`,
+          );
+          if (targetNodeDOMElement)
+            targetNodeDOMElement.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+        } catch (error) {
+          console.error("Mutation Request Terminated: ", error);
+          spawnNotificationToast(
+            "Revision Action Terminated",
+            "Could not complete cloud storage transaction protocols.",
+            "error",
+          );
+        } finally {
+          toggleFormActionProcessingStates(
+            DOM.btnSaveEdit,
+            false,
+            "Save Database Changes",
+          );
+        }
+      });
+
+      // ==========================================================================
+      // ASYNC DELETE OBJECT RECORD INFRASTRUCTURE WORKSPACE HOOKS
+      // ==========================================================================
+      window.openDeletionModal = function (documentTargetIdentifierUuid) {
+        DOM.deleteTargetId.value = documentTargetIdentifierUuid;
+        DOM.deleteModalPortal.classList.add("active");
+      };
+
+      window.closeDeletionModal = function () {
+        DOM.deleteModalPortal.classList.remove("active");
+        DOM.deleteTargetId.value = "";
+      };
+
+      DOM.btnConfirmDelete.addEventListener("click", async () => {
+        const targetedDocumentIdForPurge = DOM.deleteTargetId.value;
+        if (!targetedDocumentIdForPurge) return;
+
+        toggleFormActionProcessingStates(
+          DOM.btnConfirmDelete,
+          true,
+          "Purging Record...",
+        );
+
+        try {
+          const explicitDocumentReferencePointer = doc(
+            db,
+            "typingTexts",
+            targetedDocumentIdForPurge,
+          );
+          await deleteDoc(explicitDocumentReferencePointer);
+
+          spawnNotificationToast(
+            "Document Purged",
+            "The material database collection entry has been dropped.",
+            "success",
+          );
+          closeDeletionModal();
+        } catch (error) {
+          console.error("Decommission Execution Terminated: ", error);
+          spawnNotificationToast(
+            "Purge Phase Exception Error",
+            "Cloud persistence framework blocked entry purge routines.",
+            "error",
+          );
+        } finally {
+          toggleFormActionProcessingStates(
+            DOM.btnConfirmDelete,
+            false,
+            "Confirm Delete",
+          );
+        }
+      });
+
+      // ==========================================================================
+      // SYSTEM LEVEL UTILITY FUNCTIONS (CLIPBOARD / ALERTS / PROTECTION)
+      // ==========================================================================
+      async function executeClipboardWriteTransaction(textBlockString) {
+        try {
+          await navigator.clipboard.writeText(textBlockString);
+          spawnNotificationToast(
+            "Copied to Clipboard",
+            "Paragraph text payload assigned to workspace system clipboard logs.",
+            "success",
+          );
+        } catch (err) {
+          spawnNotificationToast(
+            "Clipboard Access Denied",
+            "System platform security architecture limited local copy operations.",
+            "error",
+          );
+        }
+      }
+
+      function toggleFormActionProcessingStates(
+        buttonElement,
+        booleanProcessingActiveState,
+        visualStringPayload,
+      ) {
+        buttonElement.disabled = booleanProcessingActiveState;
+        buttonElement.innerHTML = visualStringPayload;
+      }
+
+      function spawnNotificationToast(
+        bannerTitle,
+        contextualBodyParagraph,
+        operationalStatusType = "success",
+      ) {
+        const toastWrapperElement = document.createElement("div");
+        toastWrapperElement.className = `toast-banner ${operationalStatusType}`;
+
+        let descriptiveIconGlyphMarkup =
+          '<i class="fa-solid fa-circle-check"></i>';
+        if (operationalStatusType === "error")
+          descriptiveIconGlyphMarkup =
+            '<i class="fa-solid fa-circle-xmark"></i>';
+
+        toastWrapperElement.innerHTML = `
+                <div class="toast-icon-box">${descriptiveIconGlyphMarkup}</div>
+                <div class="toast-content">
+                    <h4>${escapeHtmlContent(bannerTitle)}</h4>
+                    <p>${escapeHtmlContent(contextualBodyParagraph)}</p>
+                </div>
+            `;
+
+        DOM.notificationCenter.appendChild(toastWrapperElement);
+
+        // Phase automation out of display layout blocks smoothly
+        setTimeout(() => {
+          toastWrapperElement.style.animation =
+            "slideInToast 0.3s ease reverse forwards";
+          setTimeout(() => {
+            toastWrapperElement.remove();
+          }, 300);
+        }, 4500);
+      }
+
+      function escapeHtmlContent(unsafeStringValue) {
+        return unsafeStringValue
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+    </script>
+  </body>
+</html>

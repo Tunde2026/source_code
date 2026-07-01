@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickOn Flashcards Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg-color: #0b0f19;
+            --header-bg: #111827;
+            --card-front-bg: #1f2937;
+            --card-back-bg: #1e1b4b;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-color: #3b82f6;
+            --accent-border: #4f46e5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 3rem;
+        }
+
+        /* Header Style */
+        header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid #374151;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(to right, #60a5fa, #a5b4fc);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Real-time State Indicators */
+        #status-message {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--accent-color);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Grid (Mobile-First) */
+        .flashcard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .flashcard-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .flashcard-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1280px) {
+            .flashcard-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* 3D Card Architecture */
+        .card-perspective {
+            perspective: 1000px;
+            height: 250px;
+            cursor: pointer;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        /* State class when flipped */
+        .card-perspective.is-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Front & Back Global Styling */
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Front specific style */
+        .card-front {
+            background-color: var(--card-front-bg);
+            color: var(--text-main);
+        }
+        /* Top badge on card front */
+        .subject-badge {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Back specific style */
+        .card-back {
+            background-color: var(--card-back-bg);
+            color: #e0e7ff;
+            transform: rotateY(180deg);
+            border-color: rgba(79, 70, 229, 0.4);
+        }
+        .back-badge {
+            color: #a5b4fc;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Text Content Layout inside cards */
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            overflow-y: auto;
+            width: 100%;
+            padding: 0.5rem 0;
+        }
+
+        /* Action Prompt Text at base of cards */
+        .card-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ClickOn Flashcards Workspace</h1>
+    </header>
+
+    <div class="container">
+        <div id="status-message">
+            <div class="spinner"></div>
+            <p>Accessing live Firestore data array...</p>
+        </div>
+
+        <main id="grid-container" class="flashcard-grid"></main>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Provided credentials configuration structure
+        const firebaseConfig = {
+            apiKey: "AIzaSyArDmH7Qbxec6LTqPNj0FFp7kAQAfsfsmg",
+            authDomain: "clickon-website.firebaseapp.com",
+            projectId: "clickon-website",
+            storageBucket: "clickon-website.firebasestorage.app",
+            messagingSenderId: "832815696553",
+            appId: "1:832815696553:web:c28bdc41070df46949b7b8",
+            measurementId: "G-861K6ZSMSJ"
+        };
+
+        // Initialize Firebase services
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Core array structure to store queried snapshot properties
+        let flashcardsArray = [];
+
+        async function fetchAndRenderFlashcards() {
+            const gridContainer = document.getElementById("grid-container");
+            const statusMessage = document.getElementById("status-message");
+
+            try {
+                // Access 'flashcards' reference target collection indices
+                const querySnapshot = await getDocs(collection(db, "flashcards"));
+                
+                flashcardsArray = [];
+                querySnapshot.forEach((doc) => {
+                    flashcardsArray.push({ id: doc.id, ...doc.data() });
+                });
+
+                // Check mapping bounds criteria if empty return state matches
+                if (flashcardsArray.length === 0) {
+                    statusMessage.innerHTML = "<p>No flashcards found try again later.</p>";
+                    return;
+                }
+
+                // Hide loading layer framework cleanly
+                statusMessage.style.display = "none";
+                gridContainer.innerHTML = ""; 
+
+                // Dynamic UI iteration layout pipeline rendering block
+                flashcardsArray.forEach((card) => {
+                    const cardElement = document.createElement("div");
+                    cardElement.className = "card-perspective";
+                    
+                    // Secure fallback values mapping parameter fields validation
+                    const subject = card.subject || "General";
+                    const question = card.question || "No Question Context Listed";
+                    const answer = card.answer || "No Answer Content Generated";
+
+                    cardElement.innerHTML = `
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <span class="subject-badge">${escapeHTML(subject)}</span>
+                                <div class="card-content">
+                                    <p>${escapeHTML(question)}</p>
+                                </div>
+                                <span class="card-hint">Click to view answer</span>
+                            </div>
+                            
+                            <div class="card-back">
+                                <span class="back-badge">Answer</span>
+                                <div class="card-content">
+                                    <p>${escapeHTML(answer)}</p>
+                                </div>
+                                <span class="card-hint">Click to view question</span>
+                            </div>
+                        </div>
+                    `;
+
+                    // Bind isolated state toggle execution properties
+                    cardElement.addEventListener("click", () => {
+                        cardElement.classList.toggle("is-flipped");
+                    });
+
+                    gridContainer.appendChild(cardElement);
+                });
+
+            } catch (error) {
+                console.error("Firestore loading error context details:", error);
+                statusMessage.innerHTML = `<p style="color: #f87171;">Failed to pull data context parameters from database: ${error.message}</p>`;
+            }
+        }
+
+        // Context rendering security utility tool to isolate string inputs from markup generation injection paths
+        function escapeHTML(str) {
+            return str.replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/"/g, "&quot;")
+                      .replace(/'/g, "&#039;");
+        }
+
+        // Execute processing pipeline routine on body load complete cycles
+        window.addEventListener("DOMContentLoaded", fetchAndRenderFlashcards);
+    </script>
+</body>
+</html>
