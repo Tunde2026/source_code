@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ClickOn Chatbot</title>
+</head>
+
+<body style="background:#0f172a; color:white; font-family:Arial;">
+
+<h2>Chat with ClickOn</h2>
+
+<div id="chatBox" style="height:300px; overflow:auto; border:1px solid gray; padding:10px;"></div>
+
+<input id="messageInput" placeholder="Type message..." style="width:80%; padding:10px;">
+<button onclick="sendMessage()">Send</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// 📤 SEND MESSAGE (THIS WAS MISSING BEFORE)
+window.sendMessage = async function () {
+  const input = document.getElementById("messageInput");
+  const text = input.value;
+
+  if (!text) return;
+
+  await addDoc(collection(db, "messages"), {
+    userMessage: text,
+    reply: "",
+    status: "pending",
+    createdAt: serverTimestamp()
+  });
+
+  input.value = "";
+};
+
+// 📥 SHOW MESSAGES + REPLIES
+const q = query(collection(db, "messages"), orderBy("createdAt"));
+
+onSnapshot(q, (snapshot) => {
+  const chatBox = document.getElementById("chatBox");
+  chatBox.innerHTML = "";
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+
+    chatBox.innerHTML += `
+      <div style="margin-bottom:10px;">
+        <b>You:</b> ${data.userMessage}<br>
+        <b>Admin:</b> ${data.reply || "..." }
+      </div>
+    `;
+  });
+});
+</script>
+
+</body>
+</html>

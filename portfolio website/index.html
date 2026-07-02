@@ -1,0 +1,3076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel="stylesheet" />
+    <title>Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Goldman:regular,700"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-[Poppins] relative z-1 bg-slate-50 text-slate-900">
+    <header
+      class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-10"
+      >
+        <a href="#home" class="text-xl font-bold tracking-tight text-slate-900"
+          >Emmanuel</a
+        >
+        <nav
+          class="flex flex-wrap gap-4 text-sm font-medium text-slate-600 md:gap-6"
+        >
+          <a href="#home" class="hover:text-slate-900 transition">Home</a>
+          <a href="#about" class="hover:text-slate-900 transition">About</a>
+          <a href="#tools" class="hover:text-slate-900 transition">Skills</a>
+          <a href="#projects" class="hover:text-slate-900 transition"
+            >Projects</a
+          >
+          <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
+        </nav>
+        <a
+          href="#contact"
+          class="hidden rounded-full bg-[#4C1D95] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#3b1975] md:inline-block"
+          >Hire Me</a
+        >
+      </div>
+    </header>
+
+    <main class="pt-28">
+      <section id="home" class="mx-auto max-w-7xl px-4 py-16 md:px-10 reveal">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="space-y-8">
+            <span
+              class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700"
+              >Frontend Developer • UI Specialist</span
+            >
+            <div class="space-y-6">
+              <h1
+                class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+              >
+                Building modern digital experiences with clean, fast frontend
+                code.
+              </h1>
+              <p
+                class="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg"
+              >
+                I craft responsive web interfaces, polished interactions, and
+                performance-driven applications using React, JavaScript,
+                Tailwind CSS and modern design principles.
+              </p>
+            </div>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <a
+                href="#projects"
+                class="inline-flex items-center justify-center rounded-full bg-[#4C1D95] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3b1975]"
+                >View Projects</a
+              >
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+                >Work With Me</a
+              >
+            </div>
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div
+                class="rounded-3xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <p class="text-3xl font-bold text-[#4C1D95]">2+</p>
+                <p class="text-sm text-slate-600">Years Experience</p>
+              </div>
+              <div
+                class="rounded-3xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <p class="text-3xl font-bold text-[#4C1D95]">120+</p>
+                <p class="text-sm text-slate-600">Projects </p>
+              </div>
+              <div
+                class="rounded-3xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <p class="text-3xl font-bold text-[#4C1D95]">100%</p>
+                <p class="text-sm text-slate-600">Client Satisfaction</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative mx-auto max-w-xl">
+            <div
+              class="absolute -left-8 -top-8 hidden h-16 w-16 rounded-full bg-[#4C1D95]/10 blur-2xl md:block"
+            ></div>
+            <div
+              class="absolute -right-8 bottom-10 hidden h-24 w-24 rounded-full bg-[#4C1D95]/15 blur-2xl md:block"
+            ></div>
+            <div
+              class="overflow-hidden border border-slate-200 bg-white p-4 shadow-2xl rounded-4xl"
+            >
+              <img
+                id="profile"
+                src="/src/profile.png"
+                alt="Profile"
+                class="h-[420] w-full rounded-[28px] object-cover transition-transform duration-700"
+              />
+            </div>
+            <div
+              class="absolute bottom-6 left-6 w-52 rounded-3xl bg-white/95 p-5 text-slate-900 shadow-xl backdrop-blur-sm"
+            >
+              <p class="text-sm uppercase tracking-[0.2em] text-slate-500">
+                Creative developer
+              </p>
+              <p class="mt-2 text-lg font-semibold">
+                Web apps, landing pages, and polished UI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="mx-auto max-w-7xl px-4 py-16 md:px-10 reveal">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_0.8fr] items-center">
+          <div class="space-y-6">
+            <div
+              class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700"
+            >
+              What I Do
+            </div>
+            <h2
+              class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+            >
+              Professional frontend development with clean UI and strong
+              performance.
+            </h2>
+
+            <p class="max-w-2xl text-base leading-8 text-slate-600">
+              I build responsive web applications, single-page experiences, and
+              landing pages that look polished on every screen. My focus is on
+              fast load times, strong accessibility, and interactions that feel
+              effortless.
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div
+                class="rounded-3xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <h3 class="font-semibold text-slate-900">Responsive design</h3>
+                <p class="mt-3 text-sm leading-6 text-slate-600">
+                  Layouts that adapt beautifully from mobile to desktop with a
+                  polished visual hierarchy.
+                </p>
+              </div>
+              <div
+                class="rounded-3xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <h3 class="font-semibold text-slate-900">Performance-first</h3>
+                <p class="mt-3 text-sm leading-6 text-slate-600">
+                  Optimized markup, lightweight assets, and fast interactions
+                  for a professional experience.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div
+              class="rounded-3xl bg-linear-to-r from-[#4C1D95]/20 to-[#7c3aed]/10 p-6 shadow-2xl"
+            >
+              <div class="flex items-center gap-4">
+                <div class="rounded-3xl bg-white p-4 shadow-sm">
+                  <img
+                    id="profile2"
+                    src="/src/profile.png"
+                    alt="Profile alternate"
+                    class="h-20 w-20 rounded-3xl object-cover"
+                  />
+                </div>
+                <div class="">
+                  <p class="text-sm uppercase tracking-[0.2em] text-slate-500">
+                    My workflow
+                  </p>
+                  <p class="mt-2 text-xl font-semibold text-slate-900">
+                    Design, build, deploy
+                  </p>
+                </div>
+              </div>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-3xl bg-white/90 p-4 shadow-sm">
+                  <p class="text-xl font-bold text-[#4C1D95]">React</p>
+                  <p class="text-sm text-slate-600 mt-1">
+                    Component-driven builds for reusable UI.
+                  </p>
+                </div>
+                <div class="rounded-3xl bg-white/90 p-4 shadow-sm">
+                  <p class="text-xl font-bold text-[#4C1D95]">Tailwind CSS</p>
+                  <p class="text-sm text-slate-600 mt-1">
+                    Fast styling with consistent spacing and polished visuals.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-3xl bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-slate-900">Core strengths</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li>Accessible interfaces with clear hierarchy</li>
+                <li>Fast interactions, mobile-first layouts</li>
+                <li>Clean code that is easy to maintain</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        class="mx-auto max-w-7xl px-4 py-16 md:px-10 reveal"
+      >
+        <div class="mb-10 space-y-3 text-center">
+          <p class="text-sm uppercase tracking-[0.25em] text-purple-700">
+            Advanced features
+          </p>
+          <h2
+            class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+          >
+            What I deliver
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div
+            class="group rounded-4xl bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div
+              class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-[#4C1D95]/10 text-[#4C1D95]"
+            >
+              <span class="text-xl font-bold">01</span>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900">Interactive UI</h3>
+            <p class="mt-4 text-sm leading-7 text-slate-600">
+              Smooth animations, polished hover states, and modern visual style
+              for stronger engagement.
+            </p>
+          </div>
+          <div
+            class="group rounded-4xl bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div
+              class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-[#4C1D95]/10 text-[#4C1D95]"
+            >
+              <span class="text-xl font-bold">02</span>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900">
+              Performance tuning
+            </h3>
+            <p class="mt-4 text-sm leading-7 text-slate-600">
+              Lightweight markup and fast visuals make your site feel premium
+              across devices.
+            </p>
+          </div>
+          <div
+            class="group rounded-4xl bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div
+              class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-[#4C1D95]/10 text-[#4C1D95]"
+            >
+              <span class="text-xl font-bold">03</span>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900">
+              Modern workflows
+            </h3>
+            <p class="mt-4 text-sm leading-7 text-slate-600">
+              Deploy-ready structure, clean code, and design systems built for
+              real client projects.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tools" class="mx-auto max-w-7xl px-4 py-16 md:px-10 reveal">
+        <div class="text-left mb-12">
+          <p
+            class="text-sm bg-purple-100 text-purple-600 inline-block px-4 py-1 rounded-full mb-3"
+          >
+            My toolkit
+          </p>
+          <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">
+            Skills & <span class="text-[#4C1D95]">Technologies</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div
+            class="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition"
+          >
+            <img
+              src="/src/icons8-html-48.png"
+              alt="HTML icon"
+              class="mx-auto mb-3 w-14 h-14"
+            />
+            <h3 class="font-semibold mb-3">HTML</h3>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-blue-500 h-2 rounded-full w-full"></div>
+            </div>
+            <p class="text-sm mt-2">100%</p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition"
+          >
+            <img
+              src="/src/icons8-css-24.png"
+              alt="CSS icon"
+              class="mx-auto mb-3 w-14 h-14"
+            />
+            <h3 class="font-semibold mb-3">CSS</h3>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-blue-500 h-2 rounded-full w-[85%]"></div>
+            </div>
+            <p class="text-sm mt-2">85%</p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition"
+          >
+            <img
+              src="/src/icons8-javascript-48.png"
+              alt="JavaScript icon"
+              class="mx-auto mb-3 w-14 h-14"
+            />
+            <h3 class="font-semibold mb-3">JavaScript</h3>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-blue-500 h-2 rounded-full w-[80%]"></div>
+            </div>
+            <p class="text-sm mt-2">80%</p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition"
+          >
+            <img
+              src="/src/icons8-react-24.png"
+              alt="React icon"
+              class="mx-auto mb-3 w-14 h-14"
+            />
+            <h3 class="font-semibold mb-3">React</h3>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-blue-500 h-2 rounded-full w-[60%]"></div>
+            </div>
+            <p class="text-sm mt-2">60%</p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition"
+          >
+            <img
+              src="/src/icons8-git-48.png"
+              alt="Git icon"
+              class="mx-auto mb-3 w-14 h-14"
+            />
+            <h3 class="font-semibold mb-3">Git</h3>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-blue-500 h-2 rounded-full w-[80%]"></div>
+            </div>
+            <p class="text-sm mt-2">80%</p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-md transition"
+          >
+            <img
+              src="/src/icons8-typescript-24.png"
+              alt="Tailwind icon"
+              class="mx-auto mb-3 w-14 h-14 opacity-70"
+            />
+            <h3 class="font-semibold mb-3">Tailwind</h3>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-blue-500 h-2 rounded-full w-[85%]"></div>
+            </div>
+            <p class="text-sm mt-2">85%</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="mx-auto max-w-7xl px-4 py-16 md:px-10">
+        <div class="mb-10 space-y-4 text-center">
+          <p class="text-sm uppercase tracking-[0.25em] text-purple-700">
+            Project showcase
+          </p>
+          <h2
+            class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+          >
+            Video project demos
+          </h2>
+          <p class="mx-auto max-w-2xl text-sm leading-7 text-slate-600">
+            Each project contains a description on the left and a video demo on
+            the right.
+          </p>
+        </div>
+        <div class="space-y-8">
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 1</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 1 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 2</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/angle hover button.mp4"
+                title="Project 2 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 3</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/animated_search_bar_practice.html2.mp4"
+                title="Project 3 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 4</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/expand button.mp4"
+                title="Project 4 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 5</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/input_color.mp4"
+                title="Project 5 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 6</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/mulitiplication.mp4"
+                title="Project 6 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 7</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/question & answer program.mp4"
+                title="Project 7 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 8</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/after effect.mp4"
+                title="Project 8 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 9</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/color hex code and rgb code.mp4"
+                title="Project 9 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 10</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/counter.mp4"
+                title="Project 10 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 11</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/gradient btn.mp4"
+                title="Project 11 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 12</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/slide show.mp4"
+                title="Project 12 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 13</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/time.mp4"
+                title="Project 13 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 14</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 14 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 15</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 15 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 16</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 16 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 17</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 17 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 18</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 18 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 19</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 19 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 20</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 20 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 21</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 21 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 22</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 22 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 23</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 23 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 24</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 24 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 25</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 25 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 26</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 26 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 27</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 27 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 28</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 28 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 29</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 29 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 30</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 30 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 31</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 31 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 32</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 32 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 33</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 33 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 34</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 34 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 35</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 35 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 36</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 36 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 37</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 37 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 38</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 38 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 39</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 39 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 40</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 40 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 41</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 41 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 42</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 42 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 43</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 43 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 44</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 44 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 45</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 45 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 46</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 46 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 47</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 47 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 48</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 48 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 49</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 49 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 50</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 50 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 51</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 51 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 52</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 52 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 53</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 53 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 54</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 54 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 55</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 55 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 56</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 56 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 57</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 57 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 58</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 58 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 59</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 59 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 60</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 60 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 61</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 61 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 62</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 62 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 63</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 63 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 64</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 64 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 65</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 65 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 66</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 66 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 67</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 67 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 68</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 68 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 69</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 69 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 70</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 70 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 71</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 71 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 72</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 72 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 73</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 73 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 74</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 74 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 75</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 75 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 76</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 76 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 77</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 77 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 78</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 78 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 79</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 79 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 80</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 80 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 81</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 81 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 82</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 82 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 83</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 83 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 84</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 84 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 85</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 85 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 86</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 86 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 87</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 87 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 88</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 88 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 89</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 89 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 90</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 90 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 91</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 91 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 92</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 92 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 93</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 93 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 94</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 94 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 95</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 95 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 96</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 96 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 97</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 97 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 98</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 98 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 99</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 99 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 100</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 100 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 101</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 101 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 102</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 102 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 103</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 103 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 104</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 104 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 105</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 105 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 106</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 106 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 107</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 107 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 108</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 108 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 109</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 109 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 110</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 110 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 111</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 111 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 112</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 112 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 113</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 113 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 114</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 114 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 115</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 115 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 116</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 116 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 117</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 117 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 118</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 118 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 119</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 119 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div>
+          <div class="grid gap-6 rounded-4xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="space-y-4">
+              <span class="inline-flex rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-700">Project 120</span>
+              <h3 class="text-2xl font-semibold text-slate-900">Lorem ipsum dolor sit amet</h3>
+              <p class="text-sm leading-7 text-slate-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+              <video
+                src="/src/background_effect.mp4"
+                title="Project 120 video"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                controls
+                class="h-64 w-full object-cover"
+              ></video>
+            </div>
+          </div></div>
+      </section>
+
+      <section
+        id="contact"
+        class="mx-auto max-w-7xl px-4 py-16 md:px-10 reveal"
+      >
+        <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="rounded-4xl bg-white p-10 shadow-sm">
+            <span
+              class="inline-flex rounded-full bg-purple-100 px-4 py-2 text-sm font-semibold text-purple-700"
+              >Contact</span
+            >
+            <h2 class="mt-6 text-3xl font-bold text-slate-900 sm:text-4xl">
+              Talk to me directly
+            </h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
+              Reach out by email, phone, WhatsApp, or send a message using the
+              contact form. I will respond quickly.
+            </p>
+            <div class="mt-8 grid gap-4">
+              <div class="rounded-3xl bg-slate-50 p-6">
+                <p class="text-sm font-semibold text-slate-900">Email</p>
+                <a
+                  href="mailto:aduraemmanuel123@gmail.com"
+                  class="mt-2 block text-base font-medium text-[#4C1D95]"
+                  >aduraemmanuel123@gmail.com</a
+                >
+              </div>
+              <div class="rounded-3xl bg-slate-50 p-6">
+                <p class="text-sm font-semibold text-slate-900">Phone</p>
+                <a
+                  href="tel:+23409067502619"
+                  class="mt-2 block text-base font-medium text-[#4C1D95]"
+                  >+234 09067502619</a
+                >
+              </div>
+              <div class="rounded-3xl bg-slate-50 p-6">
+                <p class="text-sm font-semibold text-slate-900">WhatsApp</p>
+                <a
+                  href="https://api.whatsapp.com/send?phone=23409067502619&text=Hello%20Emmanuel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-2 block text-base font-medium text-[#4C1D95]"
+                  >Chat on WhatsApp</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-4xl bg-white p-10 shadow-sm">
+            <h3 class="text-2xl font-semibold text-slate-900">
+              Send a message
+            </h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Fill out the form and I will get back to you as soon as possible.
+            </p>
+
+            <form
+              id="contactForm"
+              action="https://formspree.io/f/mbdqnnen"
+              method="POST"
+              class="mt-8 space-y-5"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="Portfolio contact request"
+              />
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="text-sm font-medium text-slate-700">Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    class="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-[#4C1D95] focus:outline-none focus:ring-2 focus:ring-[#4C1D95]/20"
+                    placeholder="Your full name"
+                  />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-medium text-slate-700">Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    class="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-[#4C1D95] focus:outline-none focus:ring-2 focus:ring-[#4C1D95]/20"
+                    placeholder="you@example.com"
+                  />
+                </label>
+              </div>
+
+              <label class="block">
+                <span class="text-sm font-medium text-slate-700">Phone</span>
+                <input
+                  type="tel"
+                  name="phone"
+                  class="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-[#4C1D95] focus:outline-none focus:ring-2 focus:ring-[#4C1D95]/20"
+                  placeholder="+234 09067502619"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-medium text-slate-700">Location</span>
+                <input
+                  type="text"
+                  name="location"
+                  class="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-[#4C1D95] focus:outline-none focus:ring-2 focus:ring-[#4C1D95]/20"
+                  placeholder="Your city or country"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-medium text-slate-700">Message</span>
+                <textarea
+                  name="message"
+                  required
+                  rows="5"
+                  class="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-[#4C1D95] focus:outline-none focus:ring-2 focus:ring-[#4C1D95]/20"
+                  placeholder="Tell me about your project"
+                ></textarea>
+              </label>
+
+              <div
+                class="flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+              >
+                <button
+                  type="submit"
+                  id="contactSubmit"
+                  class="inline-flex items-center justify-center rounded-full bg-[#4C1D95] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3b1975]"
+                >
+                  Send message
+                </button>
+                <p id="formStatus" class="text-sm text-slate-600"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 z-50 rounded-full bg-[#4C1D95] px-4 py-3 text-white shadow-xl opacity-0 pointer-events-none transition-all duration-300"
+    >
+      Top
+    </button>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+name = ['emmanuel', 'anu', 'ajibade']
+

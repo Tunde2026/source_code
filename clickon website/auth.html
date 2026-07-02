@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClickOn - Secure Authentication</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/styles.css" />
+
+    <style>
+      /* --- CSS VARIABLES & THEMING --- */
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --error: #ef4444;
+        --success: #22c55e;
+        --radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      /* --- BASE STYLES --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      /* --- AUTH CONTAINER & CARD --- */
+      .auth-container {
+        width: 100%;
+        max-width: 450px;
+        background: var(--surface);
+        border-radius: var(--radius);
+        box-shadow:
+          0 10px 25px -5px rgba(0, 0, 0, 0.05),
+          0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        padding: 40px 32px;
+      }
+
+      .brand {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .brand h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--text-main);
+        letter-spacing: -0.5px;
+      }
+
+      .brand h1 span {
+        color: var(--primary);
+      }
+
+      .brand p {
+        color: var(--text-muted);
+        font-size: 14px;
+        margin-top: 8px;
+      }
+
+      /* --- TOGGLE TABS --- */
+      .tabs {
+        display: flex;
+        background: #f1f5f9;
+        padding: 4px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+      }
+
+      .tab-btn {
+        flex: 1;
+        background: transparent;
+        border: none;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        border-radius: 6px;
+        transition: var(--transition);
+      }
+
+      .tab-btn.active {
+        background: var(--surface);
+        color: var(--text-main);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* --- FORMS & VISIBILITY --- */
+      .auth-form {
+        display: none;
+      }
+
+      .auth-form.active {
+        display: block;
+        animation: fadeIn 0.4s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: var(--text-main);
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      input[type="email"],
+      input[type="password"],
+      input[type="text"],
+      input[type="date"],
+      input[type="tel"] {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: var(--transition);
+        background: #fff;
+      }
+
+      select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: var(--transition);
+        background: #fff;
+        color: var(--text-main);
+        cursor: pointer;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+      }
+
+      /* --- BUTTONS & LINKS --- */
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn:hover {
+        background: var(--primary-hover);
+      }
+
+      .btn:disabled {
+        background: var(--text-muted);
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .forgot-password-link {
+        display: inline-block;
+        font-size: 13px;
+        color: var(--primary);
+        text-decoration: none;
+        margin-top: 8px;
+        font-weight: 500;
+      }
+
+      .forgot-password-link:hover {
+        text-decoration: underline;
+      }
+
+      /* --- OAUTH SEPARATOR --- */
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 24px 0;
+        color: var(--text-muted);
+        font-size: 13px;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .divider:not(:empty)::before {
+        margin-right: 0.5em;
+      }
+      .divider:not(:empty)::after {
+        margin-left: 0.5em;
+      }
+
+      .btn-google {
+        background: white;
+        color: var(--text-main);
+        border: 1px solid var(--border);
+      }
+
+      .btn-google:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+      }
+
+      .btn-google img {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* --- NOTIFICATIONS (Global & Inline) --- */
+      .alert {
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        display: none;
+        font-weight: 500;
+      }
+
+      .alert-error {
+        background: #fef2f2;
+        color: var(--error);
+        border: 1px solid #fee2e2;
+      }
+
+      .alert-success {
+        background: #f0fdf4;
+        color: var(--success);
+        border: 1px solid #dcfce7;
+      }
+
+      /* --- MODAL (Forgot Password) --- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+        z-index: 100;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal {
+        background: var(--surface);
+        padding: 32px;
+        border-radius: var(--radius);
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        transform: scale(0.95);
+        transition: var(--transition);
+      }
+
+      .modal-overlay.active .modal {
+        transform: scale(1);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .modal-close {
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      /* --- SPINNER --- */
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid transparent;
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading .spinner {
+        display: inline-block;
+      }
+      .loading .btn-text {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="brand">
+        <h1>Click<span>On</span></h1>
+        <p id="brand-tagline">Access your dashboard</p>
+      </div>
+
+      <div id="global-alert" class="alert"></div>
+
+      <div id="guest-view">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('login')">
+            Sign In
+          </button>
+          <button class="tab-btn" onclick="switchTab('signup')">
+            Register
+          </button>
+        </div>
+
+        <form
+          id="login-form"
+          class="auth-form active"
+          onsubmit="handleEmailAuth(event, 'login')"
+        >
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input
+              type="email"
+              id="login-email"
+              required
+              placeholder="name@company.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input
+              type="password"
+              id="login-password"
+              required
+              placeholder="••••••••"
+            />
+            <a href="#" class="forgot-password-link" onclick="toggleModal(true)"
+              >Forgot password?</a
+            >
+          </div>
+          <button type="submit" class="btn">
+            <span class="btn-text">Sign In</span>
+            <span class="spinner"></span>
+          </button>
+          <div class="divider">or continue with</div>
+          <button
+            type="button"
+            class="btn btn-google"
+            onclick="handleGoogleAuth()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              width="24"
+              height="24"
+            >
+              <path
+                fill="#2563eb"
+                d="M564 325.8C564 467.3 467.1 568 324 568C186.8 568 76 457.2 76 320C76 182.8 186.8 72 324 72C390.8 72 447 96.5 490.3 136.9L422.8 201.8C334.5 116.6 170.3 180.6 170.3 320C170.3 406.5 239.4 476.6 324 476.6C422.2 476.6 459 406.2 464.8 369.7L324 369.7L324 284.4L560.1 284.4C562.4 297.1 564 309.3 564 325.8z"
+              />
+            </svg>
+            <span>Google</span>
+          </button>
+        </form>
+
+        <form
+          id="signup-form"
+          class="auth-form"
+          onsubmit="handleEmailAuth(event, 'signup')"
+        >
+          <div class="form-group">
+            <label for="signup-first">First Name</label>
+            <input type="text" id="signup-first" required placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label for="signup-last">Last Name</label>
+            <input type="text" id="signup-last" required placeholder="Doe" />
+          </div>
+          <div class="form-group">
+            <label for="signup-dob">Date of Birth</label>
+            <input type="date" id="signup-dob" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-gender">Gender</label>
+            <select id="signup-gender">
+              <option value="">Prefer not to say</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="signup-phone">Phone (optional)</label>
+            <input type="tel" id="signup-phone" placeholder="+1 555 555 5555" />
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email Address</label>
+            <input
+              type="email"
+              id="signup-email"
+              required
+              placeholder="name@company.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input
+              type="password"
+              id="signup-password"
+              required
+              placeholder="Min 6 characters"
+            />
+          </div>
+          <div class="form-group">
+            <label for="signup-password2">Confirm Password</label>
+            <input
+              type="password"
+              id="signup-password2"
+              required
+              placeholder="Repeat password"
+            />
+          </div>
+          <button type="submit" class="btn">
+            <span class="btn-text">Create Account</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="reset-modal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Reset Password</h3>
+          <button class="modal-close" onclick="toggleModal(false)">
+            &times;
+          </button>
+        </div>
+        <p
+          style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px"
+        >
+          Enter your email address and we'll send you a link to reset your
+          password.
+        </p>
+        <form id="reset-form" onsubmit="handleForgotPassword(event)">
+          <div class="form-group">
+            <label for="reset-email">Email Address</label>
+            <input
+              type="email"
+              id="reset-email"
+              required
+              placeholder="name@company.com"
+            />
+          </div>
+          <button type="submit" class="btn">
+            <span class="btn-text">Send Reset Link</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module">
+     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  getAdditionalUserInfo,
+  deleteUser,
+  updateProfile,
+  sendPasswordResetEmail,
+  onAuthStateChanged,
+  signOut,
+  setPersistence,
+  browserLocalPersistence,
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// ==========================================
+// FIREBASE CONFIG
+// ==========================================
+const firebaseConfig = {
+  apiKey: "AIzaSyArDmH7Qbxec6LTqPNj0FFp7kAQAfsfsmg",
+  authDomain: "clickon-website.firebaseapp.com",
+  projectId: "clickon-website",
+  storageBucket: "clickon-website.firebasestorage.app",
+  messagingSenderId: "832815696553",
+  appId: "1:832815696553:web:c28bdc41070df46949b7b8",
+  measurementId: "G-861K6ZSMSJ",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+
+// Global functions
+window.switchTab = switchTab;
+window.toggleModal = toggleModal;
+window.handleEmailAuth = handleEmailAuth;
+window.handleGoogleAuth = handleGoogleAuth;
+window.handleForgotPassword = handleForgotPassword;
+
+// ==========================================
+// AUTH OBSERVER
+// ==========================================
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.replace("index.html");
+  } else {
+    const guestView = document.getElementById("guest-view");
+    if (guestView) guestView.style.display = "block";
+  }
+});
+
+// ==========================================
+// UI
+// ==========================================
+function switchTab(type) {
+  hideAlert();
+
+  document
+    .querySelectorAll(".tab-btn")
+    .forEach((tab) => tab.classList.remove("active"));
+
+  document
+    .querySelectorAll(".auth-form")
+    .forEach((form) => form.classList.remove("active"));
+
+  if (type === "login") {
+    document.querySelectorAll(".tab-btn")[0].classList.add("active");
+    document.getElementById("login-form").classList.add("active");
+    document.getElementById("brand-tagline").innerText =
+      "Access your dashboard";
+  } else {
+    document.querySelectorAll(".tab-btn")[1].classList.add("active");
+    document.getElementById("signup-form").classList.add("active");
+    document.getElementById("brand-tagline").innerText =
+      "Get started with ClickOn";
+  }
+}
+
+function toggleModal(show) {
+  hideAlert();
+
+  const modal = document.getElementById("reset-modal");
+
+  if (show) {
+    modal.classList.add("active");
+  } else {
+    modal.classList.remove("active");
+    document.getElementById("reset-form").reset();
+  }
+}
+
+// ==========================================
+// ALERT
+// ==========================================
+function showAlert(message, type = "error") {
+  const alertBox = document.getElementById("global-alert");
+
+  alertBox.textContent = message;
+  alertBox.className = `alert alert-${type}`;
+  alertBox.style.display = "block";
+}
+
+function hideAlert() {
+  document.getElementById("global-alert").style.display = "none";
+}
+
+function setSubmitting(formId, state) {
+  const form = document.getElementById(formId);
+  const button = form.querySelector('button[type="submit"]');
+
+  if (state) {
+    button.disabled = true;
+    button.classList.add("loading");
+  } else {
+    button.disabled = false;
+    button.classList.remove("loading");
+  }
+}
+
+// ==========================================
+// EMAIL LOGIN / SIGNUP
+// ==========================================
+async function handleEmailAuth(event, operation) {
+  event.preventDefault();
+  hideAlert();
+
+  const email = document.getElementById(`${operation}-email`).value.trim();
+  const password = document.getElementById(`${operation}-password`).value;
+  const formId = `${operation}-form`;
+
+  if (password.length < 6) {
+    showAlert("Password must be at least 6 characters.");
+    return;
+  }
+
+  setSubmitting(formId, true);
+
+  try {
+    if (operation === "login") {
+      await setPersistence(auth, browserLocalPersistence);
+      await signInWithEmailAndPassword(auth, email, password);
+    } else {
+      const firstName = document.getElementById("signup-first").value.trim();
+      const lastName = document.getElementById("signup-last").value.trim();
+      const dob = document.getElementById("signup-dob").value;
+      const gender = document.getElementById("signup-gender").value;
+      const phone = document.getElementById("signup-phone").value.trim();
+      const password2 = document.getElementById("signup-password2").value;
+
+      if (!firstName) {
+        showAlert("Enter your first name.");
+        return;
+      }
+
+      if (!lastName) {
+        showAlert("Enter your last name.");
+        return;
+      }
+
+      if (!dob) {
+        showAlert("Select your date of birth.");
+        return;
+      }
+
+      if (!gender) {
+        showAlert("Select your gender.");
+        return;
+      }
+
+      if (!phone) {
+        showAlert("Enter your phone number.");
+        return;
+      }
+
+      if (password !== password2) {
+        showAlert("Passwords do not match.");
+        return;
+      }
+
+      await setPersistence(auth, browserLocalPersistence);
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await updateProfile(userCred.user, {
+        displayName: `${firstName} ${lastName}`,
+      });
+
+      await setDoc(doc(db, "users", userCred.user.uid), {
+        firstName,
+        lastName,
+        dob,
+        gender,
+        phone,
+        email,
+        role: "user",
+        createdAt: serverTimestamp(),
+      });
+
+      showAlert("Account created successfully.", "success");
+      document.getElementById(formId).reset();
+      window.location.replace("index.html");
+    }
+  } catch (error) {
+    console.error(error);
+
+    switch (error.code) {
+      case "auth/invalid-credential":
+        showAlert("Wrong email or password.");
+        break;
+
+      case "auth/email-already-in-use":
+        showAlert("Email already exists.");
+        break;
+
+      case "auth/weak-password":
+        showAlert("Password is too weak.");
+        break;
+
+      default:
+        showAlert(error.message.replace("Firebase: ", ""));
+    }
+  } finally {
+    setSubmitting(formId, false);
+  }
+}
+
+// ==========================================
+// GOOGLE LOGIN
+// ==========================================
+async function handleGoogleAuth() {
+  hideAlert();
+
+  try {
+    await setPersistence(auth, browserLocalPersistence);
+    const result = await signInWithPopup(auth, googleProvider);
+
+    const user = result.user;
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    const additionalUserInfo = getAdditionalUserInfo(result);
+
+    if (userSnap.exists()) {
+      return;
+    }
+
+    // New Google account
+    if (additionalUserInfo?.isNewUser) {
+      await deleteUser(user).catch(console.error);
+      await signOut(auth);
+    } else {
+      await signOut(auth);
+    }
+
+    showAlert(
+      "Google sign-in is only available for existing accounts. Please create an account first."
+    );
+
+    setTimeout(() => {
+      switchTab("signup");
+    }, 1500);
+  } catch (error) {
+    console.error(error);
+
+    if (error.code !== "auth/popup-closed-by-user") {
+      showAlert("Google sign-in failed. Try again.");
+    }
+  }
+}
+
+// ==========================================
+// PASSWORD RESET
+// ==========================================
+async function handleForgotPassword(event) {
+  event.preventDefault();
+  hideAlert();
+
+  const email = document.getElementById("reset-email").value.trim();
+
+  setSubmitting("reset-form", true);
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+
+    toggleModal(false);
+
+    showAlert("Reset link sent to your email.", "success");
+  } catch (error) {
+    console.error(error);
+
+    toggleModal(false);
+
+    showAlert(error.message.replace("Firebase: ", ""));
+  } finally {
+    setSubmitting("reset-form", false);
+  }
+}
+    </script>
+  </body>
+</html>

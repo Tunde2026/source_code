@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ClickOn Admin Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Main */
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:350px;
+    background:#1e293b;
+    border-right:1px solid rgba(255,255,255,.1);
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    padding:20px;
+    font-size:24px;
+    font-weight:bold;
+    color:white;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.logo span{
+    color:#3b82f6;
+}
+
+.stats{
+    padding:15px;
+    color:white;
+}
+
+.stats p{
+    margin-bottom:10px;
+}
+
+.search-box{
+    padding:15px;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:#334155;
+    color:white;
+}
+
+.users-list{
+    flex:1;
+    overflow-y:auto;
+}
+
+.user-card{
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.user-card:hover{
+    background:#334155;
+}
+
+.user-card h4{
+    color:white;
+}
+
+.user-card small{
+    color:#94a3b8;
+}
+
+.user-card p{
+    color:#cbd5e1;
+    margin-top:5px;
+}
+
+
+/* Chat Section */
+
+.chat-section{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+/* Header */
+
+.chat-header{
+    height:80px;
+    background:#1e293b;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.chat-header h2{
+    color:white;
+}
+
+/* Messages */
+
+.messages-box{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* Bubble */
+
+.user{
+    background:#334155;
+    color:white;
+    align-self:flex-start;
+    max-width:70%;
+    padding:15px;
+    border-radius:15px;
+}
+
+.admin{
+    background:#3b82f6;
+    color:white;
+    align-self:flex-end;
+    max-width:70%;
+    padding:15px;
+    border-radius:15px;
+}
+
+/* Input */
+
+.input-area{
+    background:#1e293b;
+    padding:20px;
+    display:flex;
+    gap:15px;
+}
+
+.input-area input{
+    flex:1;
+    padding:15px;
+    border:none;
+    outline:none;
+    background:#334155;
+    color:white;
+    border-radius:15px;
+}
+
+.input-area button{
+    width:120px;
+    border:none;
+    background:#3b82f6;
+    color:white;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.input-area button:hover{
+    background:#2563eb;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.sidebar{
+    width:100%;
+    position:absolute;
+    z-index:10;
+}
+
+.chat-section{
+    display:none;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<div class="logo">
+Click<span>On</span> Admin
+</div>
+
+<div class="stats">
+<p>Total Users: <span id="total-users">0</span></p>
+</div>
+
+<div class="search-box">
+<input type="text" placeholder="Search users...">
+</div>
+
+<div class="users-list" id="users-list">
+
+<!-- Firebase will load users here -->
+
+</div>
+
+</div>
+
+
+<!-- Chat -->
+
+<div class="chat-section">
+
+<div class="chat-header">
+
+<h2 id="chat-title">
+Select a user
+</h2>
+
+</div>
+
+<div class="messages-box" id="messages-box">
+
+</div>
+
+<div class="input-area">
+
+<input
+type="text"
+id="message-input"
+placeholder="Type your reply..."
+>
+
+<button id="send-btn">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  addDoc,
+  serverTimestamp,
+  doc,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+// ====================================
+// FIREBASE CONFIG
+// ====================================
+const firebaseConfig = {
+  apiKey: "AIzaSyArDmH7Qbxec6LTqPNj0FFp7kAQAfsfsmg",
+  authDomain: "clickon-website.firebaseapp.com",
+  projectId: "clickon-website",
+  storageBucket: "clickon-website.firebasestorage.app",
+  messagingSenderId: "832815696553",
+  appId: "1:832815696553:web:c28bdc41070df46949b7b8",
+  measurementId: "G-861K6ZSMSJ"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+// ====================================
+// ADMIN EMAIL
+// ====================================
+const ADMINS = [
+  "aduraemmanuel123@gmail.com",
+  "ajibadetunde278@gmail.com",
+  "ojoige831@gmail.com"
+];
+
+
+// ====================================
+// ELEMENTS
+// ====================================
+const usersList = document.getElementById("users-list");
+const messagesBox = document.getElementById("messages-box");
+const messageInput = document.getElementById("message-input");
+const sendBtn = document.getElementById("send-btn");
+
+let selectedUser = null;
+
+
+// ====================================
+// CHECK ADMIN LOGIN
+// ====================================
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    location.href = "auth.html";
+    return;
+  }
+
+  if (!ADMINS.includes(user.email)) {
+  alert("Access denied.");
+  location.href = "index.html";
+  return;
+}
+
+  loadUsers();
+});
+
+
+// ====================================
+// LOAD ALL USERS
+// ====================================
+async function loadUsers() {
+
+  usersList.innerHTML = "";
+
+  const snapshot = await getDocs(collection(db, "chats"));
+
+  snapshot.forEach((chatDoc) => {
+
+    const data = chatDoc.data();
+
+    const div = document.createElement("div");
+
+    div.className = "user-card";
+
+    div.innerHTML = `
+      <h4>${data.name || "User"}</h4>
+      <small>${data.email}</small>
+      <p>${data.lastMessage || ""}</p>
+    `;
+
+    div.onclick = () => {
+      selectedUser = chatDoc.id;
+      loadMessages(selectedUser);
+    };
+
+    usersList.appendChild(div);
+
+  });
+
+}
+
+
+// ====================================
+// LOAD MESSAGES
+// ====================================
+function loadMessages(uid) {
+
+  messagesBox.innerHTML = "";
+
+  const q = query(
+    collection(db, "chats", uid, "messages"),
+    orderBy("timestamp", "asc")
+  );
+
+  onSnapshot(q, (snapshot) => {
+
+    messagesBox.innerHTML = "";
+
+    snapshot.forEach((docSnap) => {
+
+      const msg = docSnap.data();
+
+      const div = document.createElement("div");
+
+      div.className = msg.sender;
+
+      div.innerHTML = msg.text;
+
+      messagesBox.appendChild(div);
+
+    });
+
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+
+  });
+
+}
+
+
+// ====================================
+// SEND ADMIN REPLY
+// ====================================
+async function sendReply() {
+
+  if (!selectedUser) return;
+
+  const text = messageInput.value.trim();
+
+  if (!text) return;
+
+  await addDoc(
+    collection(db, "chats", selectedUser, "messages"),
+    {
+      text,
+      sender: "admin",
+      timestamp: serverTimestamp()
+    }
+  );
+
+  messageInput.value = "";
+}
+
+
+// ====================================
+// BUTTON EVENT
+// ====================================
+sendBtn.addEventListener("click", sendReply);
+
+messageInput.addEventListener("keypress", (e) => {
+
+  if (e.key === "Enter") {
+    sendReply();
+  }
+
+});
+</script>
+
+</body>
+</html>
